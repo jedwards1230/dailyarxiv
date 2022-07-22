@@ -1,0 +1,42 @@
+{
+  "name": "dailyarxiv",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/icons-material": "^5.8.4",
+    "@mui/joy": "^5.0.0-alpha.37",
+    "@mui/lab": "^5.0.0-alpha.91",
+    "@mui/material": "^5.9.1",
+    "child_process": "^1.0.2",
+    "fs": "^0.0.1-security",
+    "http-proxy-agent": "^5.0.0",
+    "net": "^1.0.2",
+    "next": "12.2.2",
+    "next-themes": "^0.2.0",
+    "react": "18.2.0",
+    "react-calendar": "^3.7.0",
+    "react-dom": "18.2.0",
+    "react-hook-form": "^7.33.1",
+    "tls": "^0.0.1",
+    "xml2js": "^0.4.23"
+  },
+  "devDependencies": {
+    "@types/jsdom": "^16.2.14",
+    "@types/node": "18.0.6",
+    "@types/react": "18.0.15",
+    "@types/react-calendar": "^3.5.1",
+    "@types/react-dom": "18.0.6",
+    "@types/xml2js": "^0.4.11",
+    "eslint": "8.20.0",
+    "eslint-config-next": "12.2.2",
+    "typescript": "4.7.4"
+  }
+}
