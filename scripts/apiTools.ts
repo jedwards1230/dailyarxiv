@@ -16,7 +16,7 @@ export async function fetchArchive(url: string) {
 }
 
 export function queryToUrl(query: string, date: Date) {
-	const base = 'http://export.arxiv.org/api/query';
+	const base = '//export.arxiv.org/api/query';
 	const to: Date = previousArxivDay(date);
 	const from: Date = previousArxivDay(to);
 	return base + '?search_query=(' + query + ')+AND+lastUpdatedDate:['
