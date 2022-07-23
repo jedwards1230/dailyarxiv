@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import "../components/calendar/Calendar.css";
+import "../styles/Calendar.css";
 import type { AppProps } from 'next/app'
 import { CssBaseline, NoSsr, PaletteMode, ThemeProvider, useMediaQuery } from '@mui/material';
 import { useEffect, useMemo, useState, createContext, useContext } from 'react';
@@ -43,7 +43,7 @@ function MyApp(props: MyAppProps) {
 				<AppContext.Provider value={sharedState}>
 					<NoSsr>
 						<CssBaseline />
-						<Script src="/theme.js" strategy="beforeInteractive" />
+						{/* <Script src="/theme.js" strategy="beforeInteractive" /> */}
 						<Component {...pageProps} />
 					</NoSsr>
 				</AppContext.Provider>
