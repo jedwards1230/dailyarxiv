@@ -1,16 +1,13 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import CollapseCheckList from '../components/categoryTree/categorytree'
 import CalendarComponent from '../components/calendar/calendar'
-import { fetchArchive, ListCategoryHeading, makeArxivDatabase, queryToUrl } from '../scripts/apiTools'
+import { fetchArchive, makeArxivDatabase, queryToUrl } from '../scripts/apiTools'
 import styles from '../styles/Home.module.css'
 import { FormProvider, useForm } from 'react-hook-form'
-import { Button, Collapse, List, ListItemButton, ListItemText } from '@mui/material'
+import { Button, List } from '@mui/material'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { useAppContext } from './_app'
-import { ExpandLess, ExpandMore } from '@mui/icons-material'
-import { useState } from 'react'
 import CategoryForm from '../components/categoryTree/categoryForm'
 
 const Home: NextPage = () => {
@@ -22,10 +19,10 @@ const Home: NextPage = () => {
 
 	const onSubmit = async (data: any) => {
 		console.log(data);
-		const url = queryToUrl('all:electron', data.datepicker);
+		const url = queryToUrl('cat:astro-ph.GA+OR+cat:math.AT+OR+cat:math.CT', data.datepicker);
 		console.log(url);
 		const response = await fetchArchive(url);
-		console.log(response);
+		//console.log(response);
 		appContext.results = response as any[];
 		router.push('/results');
 	}
@@ -38,36 +35,34 @@ const Home: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 
-			<main className={styles.main}>
-				<FormProvider {...methods}>
-					<div className={styles.welcome}>
-						<h1 className={styles.title}>
-							Daily  <Link href="/">arXiv</Link>
-						</h1>
+			<FormProvider {...methods}>
+				<div className={styles.welcome}>
+					<h1 className={styles.title}>
+						Daily  <Link href="/">arXiv</Link>
+					</h1>
 
-						<p className={styles.description}>
-							Get started by choosing a date below.
-						</p>
+					<p className={styles.description}>
+						Get started by choosing a date below.
+					</p>
 
-						<CalendarComponent />
-					</div>
+					<CalendarComponent />
+				</div>
 
-					<div className={styles.categoryTree}>
-						<List
-							sx={{ width: '100%', bgcolor: 'background.paper' }}>
-							{dbobj.map((section, i) => {
-								return (
-									<CategoryForm key={i} section={section} />
-								)
-							})}
-						</List>
-					</div>
+				<div className={styles.categoryTree}>
+					<List
+						sx={{ width: '100%', bgcolor: 'background.paper' }}>
+						{dbobj.map((section, i) => {
+							return (
+								<CategoryForm key={i} idx={i} section={section} />
+							)
+						})}
+					</List>
 
 					<Button
 						onClick={methods.handleSubmit(onSubmit)}
 						variant="contained">Submit</Button>
-				</FormProvider>
-			</main>
+				</div>
+			</FormProvider>
 
 			<footer className={styles.footer}>
 				<a

@@ -6,17 +6,13 @@ import { useEffect, useMemo, useState, createContext, useContext } from 'react';
 import createEmotionCache from '../scripts/createEmotionCache';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { buildTheme } from '../scripts/theme';
-import Script from 'next/script';
+//import Script from 'next/script';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
 
 interface MyAppProps extends AppProps {
 	emotionCache?: EmotionCache;
-}
-
-type AppState = {
-	results: any[] | null;
 }
 
 const AppContext = createContext({

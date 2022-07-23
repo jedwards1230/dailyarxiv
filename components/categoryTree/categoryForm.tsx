@@ -2,10 +2,10 @@ import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { List, ListItemButton, ListItemText, Collapse, ListItem, Checkbox } from "@mui/material";
 import { useState } from "react";
 import { useFormContext } from "react-hook-form";
-import { ListCategoryHeading } from "../../scripts/apiTools";
 import CollapseCheckList from "./categorytree";
 
 const CategoryForm = (props: {
+    idx: number;
     section: ListCategoryHeading;
 }) => {
     const { register } = useFormContext();
@@ -20,7 +20,7 @@ const CategoryForm = (props: {
                 onClick={handleClick}>
                 <Checkbox
                     edge="start"
-                    {...register(props.section.name)} />
+                    {...register(`categories[${props.idx}].checked`)} />
                 <ListItemText primary={props.section.name} />
                 {open ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>

@@ -2,7 +2,7 @@ import { NextPage } from "next/types";
 import { useAppContext } from "./_app";
 import styles from '../styles/Results.module.css'
 import Head from 'next/head'
-import { Button, Card, CardActions, CardContent, Link as MUILink, List, ListItem, ListItemText, Stack, Typography } from "@mui/material";
+import { Card, CardActions, CardContent, Link as MUILink, Stack, Typography } from "@mui/material";
 import Link from 'next/link'
 
 

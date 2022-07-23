@@ -86,6 +86,210 @@ export type ListCategoryItem = {
 export function makeArxivDatabase(): ListCategoryHeading[] {
 	return [
 		{
+			name: 'Computer Science',
+			areas: [
+				{
+					code: 'cs.AI',
+					selected: false,
+					name: 'Artificial Intelligence'
+				},
+				{
+					code: 'cs.AR',
+					selected: false,
+					name: 'Hardware Architecture'
+				},
+				{
+					code: 'cs.CC',
+					selected: false,
+					name: 'Computational Complexity'
+				},
+				{
+					code: 'cs.CL',
+					selected: false,
+					name: 'Computation and Language'
+				},
+				{
+					code: 'cs.CE',
+					selected: false,
+					name: 'Computation Engineering, Finance and Science'
+				},
+				{
+					code: 'cs.CG',
+					selected: false,
+					name: 'Computational Geometry'
+				},
+				{
+					code: 'cs.CR',
+					selected: false,
+					name: 'Cryptography and Security'
+				},
+				{
+					code: 'cs.CV',
+					selected: false,
+					name: 'Computer Vision and Pattern Recognition'
+				},
+				{
+					code: 'cs.CY',
+					selected: false,
+					name: 'Computers and Society'
+				},
+				{
+					code: 'cs.DB',
+					selected: false,
+					name: 'Databases'
+				},
+				{
+					code: 'cs.DC',
+					selected: false,
+					name: 'Distributed, Parallel, and Cluster Computing'
+				},
+				{
+					code: 'cs.DL',
+					selected: false,
+					name: 'Digital Libraries'
+				},
+				{
+					code: 'cs.DM',
+					selected: false,
+					name: 'Discrete Mathematics'
+				},
+				{
+					code: 'cs.DS',
+					selected: false,
+					name: 'Data Structures and Algorithms'
+				},
+				{
+					code: 'cs.ET',
+					selected: false,
+					name: 'Emerging Technologies'
+				},
+				{
+					code: 'cs.FL',
+					selected: false,
+					name: 'Formal Languages and Automata Theory'
+				},
+				{
+					code: 'cs.GL',
+					selected: false,
+					name: 'General Literature'
+				},
+				{
+					code: 'cs.GR',
+					selected: false,
+					name: 'Graphics'
+				},
+				{
+					code: 'cs.GT',
+					selected: false,
+					name: 'Computer Science and Game Theory'
+				},
+				{
+					code: 'cs.HC',
+					selected: false,
+					name: 'Human-Computer Interaction'
+				},
+				{
+					code: 'cs.IR',
+					selected: false,
+					name: 'Information Retrieval'
+				},
+				{
+					code: 'cs.IT',
+					selected: false,
+					name: 'Information Theory'
+				},
+				{
+					code: 'cs.LG',
+					selected: false,
+					name: 'Machine Learning'
+				},
+				{
+					code: 'cs.LO',
+					selected: false,
+					name: 'Logic in Computer Science'
+				},
+				{
+					code: 'cs.MA',
+					selected: false,
+					name: 'Multiagent Systems'
+				},
+				{
+					code: 'cs.MM',
+					selected: false,
+					name: 'Multimedia'
+				},
+				{
+					code: 'cs.MS',
+					selected: false,
+					name: 'Mathematical Software'
+				},
+				{
+					code: 'cs.NA',
+					selected: false,
+					name: 'Numerical Analysis'
+				},
+				{
+					code: 'cs.NE',
+					selected: false,
+					name: 'Neural and Evolutionary Computing'
+				},
+				{
+					code: 'cs.NI',
+					selected: false,
+					name: 'Networking and Internet Architecture'
+				},
+				{
+					code: 'cs.OH',
+					selected: false,
+					name: 'Other Computer Science'
+				},
+				{
+					code: 'cs.OS',
+					selected: false,
+					name: 'Operating System'
+				},
+				{
+					code: 'cs.PF',
+					selected: false,
+					name: 'Performance'
+				},
+				{
+					code: 'cs.PL',
+					selected: false,
+					name: 'Programming Languages'
+				},
+				{
+					code: 'cs.RO',
+					selected: false,
+					name: 'Robotics'
+				},
+				{
+					code: 'cs.SC',
+					selected: false,
+					name: 'Symbolic Computation'
+				},
+				{
+					code: 'cs.SD',
+					selected: false,
+					name: 'Sound'
+				},
+				{
+					code: 'cs.SE',
+					selected: false,
+					name: 'Software Engineering'
+				},
+				{
+					code: 'cs.SI',
+					selected: false,
+					name: 'Social and Information Networks'
+				},
+				{
+					code: 'cs.SY',
+					selected: false,
+					name: 'Systems and Control'
+				}]
+		}, /* Computer Science */
+		{
 			name: 'Physics',
 			areas: [
 				{
@@ -562,216 +766,6 @@ export function makeArxivDatabase(): ListCategoryHeading[] {
 						}]
 				}]
 		}, /* Quantitative Biology */
-		{
-			name: 'Computer Science',
-			areas: [
-				{
-					code: 'cs*',
-					selected: false,
-					name: 'Computer Research Repository',
-					subareas: [
-						{
-							code: 'cs.AI',
-							selected: false,
-							name: 'Artificial Intelligence'
-						},
-						{
-							code: 'cs.CL',
-							selected: false,
-							name: 'Computation and Language'
-						},
-						{
-							code: 'cs.CC',
-							selected: false,
-							name: 'Computation Complexity'
-						},
-						{
-							code: 'cs.CE',
-							selected: false,
-							name: 'Computation Engineering, Finance and Science'
-						},
-						{
-							code: 'cs.CG',
-							selected: false,
-							name: 'Computational Geometry'
-						},
-						{
-							code: 'cs.GT',
-							selected: false,
-							name: 'Computer Science and Game Theory'
-						},
-						{
-							code: 'cs.CV',
-							selected: false,
-							name: 'Computer Vision and Pattern Recognition'
-						},
-						{
-							code: 'cs.CY',
-							selected: false,
-							name: 'Computers and Society'
-						},
-						{
-							code: 'cs.CR',
-							selected: false,
-							name: 'Cryptography and Security'
-						},
-						{
-							code: 'cs.DS',
-							selected: false,
-							name: 'Data Structures and Algorithms'
-						},
-						{
-							code: 'cs.DB',
-							selected: false,
-							name: 'Databases'
-						},
-						{
-							code: 'cs.DL',
-							selected: false,
-							name: 'Digital Libraries'
-						},
-						{
-							code: 'cs.DM',
-							selected: false,
-							name: 'Discrete Mathematics'
-						},
-						{
-							code: 'cs.DC',
-							selected: false,
-							name: 'Distributed, Parallel, and Cluster Computing'
-						},
-						{
-							code: 'cs.ET',
-							selected: false,
-							name: 'Emerging Technologies'
-						},
-						{
-							code: 'cs.FL',
-							selected: false,
-							name: 'Formal Languages and Automata Theory'
-						},
-						{
-							code: 'cs.GL',
-							selected: false,
-							name: 'General Literature'
-						},
-						{
-							code: 'cs.GR',
-							selected: false,
-							name: 'Graphics'
-						},
-						{
-							code: 'cs.AR',
-							selected: false,
-							name: 'Hardware Architecture'
-						},
-						{
-							code: 'cs.HC',
-							selected: false,
-							name: 'Human-Computer Interaction'
-						},
-						{
-							code: 'cs.IR',
-							selected: false,
-							name: 'Information Retrieval'
-						},
-						{
-							code: 'cs.IT',
-							selected: false,
-							name: 'Information Theory'
-						},
-						{
-							code: 'cs.LO',
-							selected: false,
-							name: 'Logic in Computer Science'
-						},
-						{
-							code: 'cs.LG',
-							selected: false,
-							name: 'Machine Learning'
-						},
-						{
-							code: 'cs.MS',
-							selected: false,
-							name: 'Mathematical Software'
-						},
-						{
-							code: 'cs.MA',
-							selected: false,
-							name: 'Multiagent Systems'
-						},
-						{
-							code: 'cs.MM',
-							selected: false,
-							name: 'Multimedia'
-						},
-						{
-							code: 'cs.NI',
-							selected: false,
-							name: 'Networking and Internet Architecture'
-						},
-						{
-							code: 'cs.NE',
-							selected: false,
-							name: 'Neural and Evolutionary Computing'
-						},
-						{
-							code: 'cs.NA',
-							selected: false,
-							name: 'Numerical Analysis'
-						},
-						{
-							code: 'cs.OS',
-							selected: false,
-							name: 'Operating System'
-						},
-						{
-							code: 'cs.OH',
-							selected: false,
-							name: 'Other Computer Science'
-						},
-						{
-							code: 'cs.PF',
-							selected: false,
-							name: 'Performance'
-						},
-						{
-							code: 'cs.PL',
-							selected: false,
-							name: 'Programming Languages'
-						},
-						{
-							code: 'cs.RO',
-							selected: false,
-							name: 'Robotics'
-						},
-						{
-							code: 'cs.SI',
-							selected: false,
-							name: 'Social and Information Networks'
-						},
-						{
-							code: 'cs.SE',
-							selected: false,
-							name: 'Software Engineering'
-						},
-						{
-							code: 'cs.SD',
-							selected: false,
-							name: 'Sound'
-						},
-						{
-							code: 'cs.SC',
-							selected: false,
-							name: 'Symbolic Computation'
-						},
-						{
-							code: 'cs.SY',
-							selected: false,
-							name: 'Systems and Control'
-						}]
-				}]
-		}, /* Computer Science */
 		{
 			name: 'Quantitative Finance',
 			areas: [

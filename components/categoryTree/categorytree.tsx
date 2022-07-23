@@ -1,7 +1,6 @@
 import * as React from 'react';
 import Checkbox from '@mui/material/Checkbox';
-import { Collapse, List, ListItem, ListItemButton, ListItemText, Typography } from '@mui/material';
-import { ListCategoryHeading, ListCategoryItem, makeArxivDatabase } from '../../scripts/apiTools';
+import { Collapse, List, ListItem, ListItemButton, ListItemText } from '@mui/material';
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import { useFormContext } from 'react-hook-form';
 
