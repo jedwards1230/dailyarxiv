@@ -71,18 +71,6 @@ function dateToArxivDate(date: Date, from: boolean): string {
 	return text;
 }
 
-export type ListCategoryHeading = {
-	name: string,
-	areas: ListCategoryItem[]
-}
-
-export type ListCategoryItem = {
-	name: string,
-	selected: boolean,
-	code: string,
-	subareas?: ListCategoryItem[]
-}
-
 export function makeArxivDatabase(): ListCategoryHeading[] {
 	return [
 		{
