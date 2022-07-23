@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import "../styles/Calendar.css";
+import "../styles/calendar.css";
 import type { AppProps } from 'next/app'
 import { CssBaseline, NoSsr, PaletteMode, ThemeProvider, useMediaQuery } from '@mui/material';
 import { useEffect, useMemo, useState, createContext, useContext } from 'react';
