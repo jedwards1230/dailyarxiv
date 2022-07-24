@@ -8,11 +8,33 @@ export async function fetchArchive(url: string) {
 		const response = await fetch(url);
 		const xml = await response.text();
 		const json = await parser.parseStringPromise(xml);
-		const papers: any[] = json.feed.entry;
+		/* const papers: ArchiveResult[] = json.feed.entry.map((entry: any) => {
+			return cleanData(entry);
+		}); */
+		const papers: ArchiveResult[] = json.feed.entry.map((e: any) => cleanData(e));
+
 		return papers
 	} catch (e) {
 		console.log({ e })
 	}
+}
+
+function cleanData(entry: any) {
+	console.log(entry)
+	const paper: ArchiveResult = {
+		author: entry.author,
+		category: entry.category,
+		id: entry.id[0],
+		link: entry.link,
+		published: entry.published[0],
+		summary: entry.summary[0],
+		title: entry.title[0],
+		updated: entry.updated[0]
+	}
+
+	if (entry["arxiv:comment"]) paper.comment = entry["arxiv:comment"][0];
+	if (entry["arxiv:primary_category"]) paper.primaryCategory = entry["arxiv:primary_category"][0].$.term;
+	return paper
 }
 
 export function queryToUrl(query: string, date: Date) {
@@ -22,7 +44,7 @@ export function queryToUrl(query: string, date: Date) {
 	return base + '?search_query=(' + query + ')+AND+lastUpdatedDate:['
 		+ dateToArxivDate(from, true) + '+TO+'
 		+ dateToArxivDate(to, false)
-		+ ']&max_results=10';
+		+ ']&max_results=5';
 }
 
 function previousArxivDay(date: Date) {

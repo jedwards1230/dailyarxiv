@@ -21,8 +21,7 @@ const Home: NextPage = () => {
 		const url = queryToUrl('cat:astro-ph.GA+OR+cat:math.AT+OR+cat:math.CT', data.datepicker);
 		console.log(url);
 		const response = await fetchArchive(url);
-		// console.log(response);
-		appContext.results = response as any[];
+		appContext.results = response as ArchiveResult[];
 		await router.push('/results');
 	}
 
@@ -57,6 +56,7 @@ const Home: NextPage = () => {
 						</List>
 
 						<Button
+							style={{ marginTop: '4rem' }}
 							onClick={methods.handleSubmit(onSubmit)}
 							variant="contained">Submit</Button>
 					</div>

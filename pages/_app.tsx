@@ -16,7 +16,7 @@ interface MyAppProps extends AppProps {
 }
 
 const AppContext = createContext({
-	results: new Array<any>()
+	results: new Array<ArchiveResult>()
 });
 
 function MyApp(props: MyAppProps) {

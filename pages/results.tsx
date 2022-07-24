@@ -31,12 +31,11 @@ const Results: NextPage = () => {
                     </h1>
 
                     <p className={styles.description}>
-                        Results
+                        {appContext.results.length} Results
                     </p>
                 </div>
                 <Stack className={styles.results} spacing={2}>
-                    {appContext.results.map((result, i) => {
-                        //console.log(result)
+                    {appContext.results.map((result: ArchiveResult, i: number) => {
                         return (
                             <div key={result.id + i}>
                                 <Card>
@@ -45,18 +44,18 @@ const Results: NextPage = () => {
                                             {result.title}
                                         </Typography>
                                         <Typography color="text.secondary">
-                                            {'Authors: ' + result.author.map((author: { name: string }, i: number) => {
+                                            {'Authors: ' + result.author.map((author, i: number) => {
                                                 return (i === result.author.length - 1) ? author.name : author.name + ' '
                                             })}
                                         </Typography>
                                     </CardContent>
                                     <CardActions>
                                         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                            Category
+                                            {result.primaryCategory}
                                         </Typography>
                                         <MUILink
                                             sx={{ ml: 'auto' }}
-                                            href={result.id}
+                                            href={result.id[0]}
                                             target="_blank"
                                             rel="noopener noreferrer">Open</MUILink>
                                     </CardActions>
