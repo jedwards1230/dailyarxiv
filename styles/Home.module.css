@@ -1,6 +1,5 @@
 .scrollParent {
 	scroll-snap-type: y mandatory;
-	scroll-snap-points-y: repeat(100vh);
 	overflow: scroll;
 	height: 100vh;
 }
@@ -21,15 +20,16 @@
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	scroll-snap-align: center;
 	height: 100vh;
 }
 
 .welcome {
+	scroll-snap-align: center;
 	min-height: 100vh;
 }
 
 .categoryTree {
+	scroll-snap-align: start;
 	min-height: 100vh;
 	width: 100%;
 	max-width: 600px;
@@ -44,6 +44,7 @@
 	border-top: 1px solid #eaeaea;
 	justify-content: center;
 	align-items: center;
+	scroll-snap-align: end;
 }
 
 .footer a {
