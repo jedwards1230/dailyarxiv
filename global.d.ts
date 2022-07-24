@@ -9,3 +9,9 @@ type ListCategoryItem = {
 	code: string,
 	subareas?: ListCategoryItem[]
 }
+
+type ArchiveHeader = {
+	name: string,
+	code: string,
+	children?: ArchiveHeader[]
+}

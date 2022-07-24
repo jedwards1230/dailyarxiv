@@ -1,14 +1,20 @@
 import { ExpandLess, ExpandMore } from "@mui/icons-material";
 import { List, ListItemButton, ListItemText, Collapse, ListItem, Checkbox } from "@mui/material";
 import { useState } from "react";
-import { useFormContext } from "react-hook-form";
+import { useFormContext, useFieldArray } from "react-hook-form";
 import CollapseCheckList from "./categorytree";
+
 
 const CategoryForm = (props: {
     idx: number;
-    section: ListCategoryHeading;
+    section: ArchiveHeader;
 }) => {
-    const { register } = useFormContext();
+    const { control, register } = useFormContext();
+    const { fields, append, remove } = useFieldArray({
+        control,
+        name: "catChoice"
+    });
+
     const [open, setOpen] = useState(false);
 
     const handleClick = () => {
@@ -30,7 +36,7 @@ const CategoryForm = (props: {
                     sx={{ width: '100%', bgcolor: 'background.paper' }}>
                     <ListItem sx={{ pl: 4 }}>
                         <CollapseCheckList
-                            sections={props.section.areas} />
+                            sections={props.section.children!} />
                     </ListItem>
                 </List>
             </Collapse>

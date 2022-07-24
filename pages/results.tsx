@@ -4,10 +4,17 @@ import styles from '../styles/Results.module.css'
 import Head from 'next/head'
 import { Card, CardActions, CardContent, Link as MUILink, Stack, Typography } from "@mui/material";
 import Link from 'next/link'
+import {useRouter} from "next/router";
 
 
 const Results: NextPage = () => {
+    const router = useRouter();
     const appContext = useAppContext();
+
+    if (appContext.results.length < 1) {
+        router.push('/');
+        return null;
+    }
 
     return (
         <div className={styles.container}>

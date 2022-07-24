@@ -5,7 +5,7 @@ import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import { useFormContext } from 'react-hook-form';
 
 const CollapseCheckList = (props: {
-    sections: ListCategoryItem[]
+    sections: ArchiveHeader[]
 }) => {
     const { register } = useFormContext();
     const [open, setOpen] = React.useState(new Array(props.sections.length).fill(false));
@@ -19,7 +19,7 @@ const CollapseCheckList = (props: {
     const buildTree = () => {
         return (
             props.sections.map((section, i) => {
-                if (section.subareas) {
+                if (section.children) {
                     if (props.sections.length > 1) {
                         return (
                             <div key={section.code}>
@@ -35,7 +35,7 @@ const CollapseCheckList = (props: {
                                         disablePadding
                                         sx={{ width: '100%', bgcolor: 'background.paper' }}>
                                         <ListItem sx={{ pl: 4 }}>
-                                            <CollapseCheckList sections={section.subareas} />
+                                            <CollapseCheckList sections={section.children!} />
                                         </ListItem>
                                     </List>
                                 </Collapse>
@@ -43,7 +43,7 @@ const CollapseCheckList = (props: {
                         )
                     } else {
                         return (
-                            <CollapseCheckList key={section.code} sections={section.subareas} />
+                            <CollapseCheckList key={section.code} sections={section.children!} />
                         )
                     }
                 } else {
@@ -63,7 +63,7 @@ const CollapseCheckList = (props: {
 }
 
 const CategoryNode = (props: {
-    node: ListCategoryItem;
+    node: ArchiveHeader;
 }) => {
     const { register } = useFormContext();
     return (

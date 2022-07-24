@@ -71,873 +71,697 @@ function dateToArxivDate(date: Date, from: boolean): string {
 	return text;
 }
 
-export function makeArxivDatabase(): ListCategoryHeading[] {
-	return [
-		{
-			name: 'Computer Science',
-			areas: [
-				{
-					code: 'cs.AI',
-					selected: false,
-					name: 'Artificial Intelligence'
-				},
-				{
-					code: 'cs.AR',
-					selected: false,
-					name: 'Hardware Architecture'
-				},
-				{
-					code: 'cs.CC',
-					selected: false,
-					name: 'Computational Complexity'
-				},
-				{
-					code: 'cs.CL',
-					selected: false,
-					name: 'Computation and Language'
-				},
-				{
-					code: 'cs.CE',
-					selected: false,
-					name: 'Computation Engineering, Finance and Science'
-				},
-				{
-					code: 'cs.CG',
-					selected: false,
-					name: 'Computational Geometry'
-				},
-				{
-					code: 'cs.CR',
-					selected: false,
-					name: 'Cryptography and Security'
-				},
-				{
-					code: 'cs.CV',
-					selected: false,
-					name: 'Computer Vision and Pattern Recognition'
-				},
-				{
-					code: 'cs.CY',
-					selected: false,
-					name: 'Computers and Society'
-				},
-				{
-					code: 'cs.DB',
-					selected: false,
-					name: 'Databases'
-				},
-				{
-					code: 'cs.DC',
-					selected: false,
-					name: 'Distributed, Parallel, and Cluster Computing'
-				},
-				{
-					code: 'cs.DL',
-					selected: false,
-					name: 'Digital Libraries'
-				},
-				{
-					code: 'cs.DM',
-					selected: false,
-					name: 'Discrete Mathematics'
-				},
-				{
-					code: 'cs.DS',
-					selected: false,
-					name: 'Data Structures and Algorithms'
-				},
-				{
-					code: 'cs.ET',
-					selected: false,
-					name: 'Emerging Technologies'
-				},
-				{
-					code: 'cs.FL',
-					selected: false,
-					name: 'Formal Languages and Automata Theory'
-				},
-				{
-					code: 'cs.GL',
-					selected: false,
-					name: 'General Literature'
-				},
-				{
-					code: 'cs.GR',
-					selected: false,
-					name: 'Graphics'
-				},
-				{
-					code: 'cs.GT',
-					selected: false,
-					name: 'Computer Science and Game Theory'
-				},
-				{
-					code: 'cs.HC',
-					selected: false,
-					name: 'Human-Computer Interaction'
-				},
-				{
-					code: 'cs.IR',
-					selected: false,
-					name: 'Information Retrieval'
-				},
-				{
-					code: 'cs.IT',
-					selected: false,
-					name: 'Information Theory'
-				},
-				{
-					code: 'cs.LG',
-					selected: false,
-					name: 'Machine Learning'
-				},
-				{
-					code: 'cs.LO',
-					selected: false,
-					name: 'Logic in Computer Science'
-				},
-				{
-					code: 'cs.MA',
-					selected: false,
-					name: 'Multiagent Systems'
-				},
-				{
-					code: 'cs.MM',
-					selected: false,
-					name: 'Multimedia'
-				},
-				{
-					code: 'cs.MS',
-					selected: false,
-					name: 'Mathematical Software'
-				},
-				{
-					code: 'cs.NA',
-					selected: false,
-					name: 'Numerical Analysis'
-				},
-				{
-					code: 'cs.NE',
-					selected: false,
-					name: 'Neural and Evolutionary Computing'
-				},
-				{
-					code: 'cs.NI',
-					selected: false,
-					name: 'Networking and Internet Architecture'
-				},
-				{
-					code: 'cs.OH',
-					selected: false,
-					name: 'Other Computer Science'
-				},
-				{
-					code: 'cs.OS',
-					selected: false,
-					name: 'Operating System'
-				},
-				{
-					code: 'cs.PF',
-					selected: false,
-					name: 'Performance'
-				},
-				{
-					code: 'cs.PL',
-					selected: false,
-					name: 'Programming Languages'
-				},
-				{
-					code: 'cs.RO',
-					selected: false,
-					name: 'Robotics'
-				},
-				{
-					code: 'cs.SC',
-					selected: false,
-					name: 'Symbolic Computation'
-				},
-				{
-					code: 'cs.SD',
-					selected: false,
-					name: 'Sound'
-				},
-				{
-					code: 'cs.SE',
-					selected: false,
-					name: 'Software Engineering'
-				},
-				{
-					code: 'cs.SI',
-					selected: false,
-					name: 'Social and Information Networks'
-				},
-				{
-					code: 'cs.SY',
-					selected: false,
-					name: 'Systems and Control'
-				}]
-		}, /* Computer Science */
-		{
-			name: 'Physics',
-			areas: [
-				{
-					code: 'astro-ph*',
-					selected: false,
-					name: 'Astrophysics',
-					subareas: [
-						{
-							code: 'astro-ph.GA',
-							selected: false,
-							name: 'Astrophysics of Galaxies'
-						},
-						{
-							code: 'astro-ph.CO',
-							selected: false,
-							name: 'Cosmology and Nongalactic Astrophysics'
-						},
-						{
-							code: 'astro-ph.EP',
-							selected: false,
-							name: 'Earth and Planetary Astrophysics'
-						},
-						{
-							code: 'astro-ph.HE',
-							selected: false,
-							name: 'High Energy Astrophysical Phenomena'
-						},
-						{
-							code: 'astro-ph.IM',
-							selected: false,
-							name: 'Instrumentation and Methods for Astrophysics'
-						},
-						{
-							code: 'astro-ph.SR',
-							selected: false,
-							name: 'Solar and Stella Astrophysics'
-						}]
-				}, /* astro-ph */
-				{
-					code: 'cond-mat*',
-					selected: false,
-					name: 'Condensed Matter Physics',
-					subareas: [
-						{
-							code: 'cond-mat.dis-nn',
-							selected: false,
-							name: 'Disordered Systems and Neural Networks'
-						},
-						{
-							code: 'cond-mat.mtrl-sci',
-							selected: false,
-							name: 'Materials Science'
-						},
-						{
-							code: 'cond-mat.mes-hall',
-							selected: false,
-							name: 'Mesoscale and Nanoscale Physics'
-						},
-						{
-							code: 'cond-mat.other',
-							selected: false,
-							name: 'Other Condensed Matter'
-						},
-						{
-							code: 'cond-mat.quant-gas',
-							selected: false,
-							name: 'Quantum Gases'
-						},
-						{
-							code: 'soft',
-							selected: false,
-							name: 'Soft Condensed Matter'
-						},
-						{
-							code: 'cond-mat.stat-mech',
-							selected: false,
-							name: 'Statistical Mechanics'
-						},
-						{
-							code: 'cond-mat.str-el',
-							selected: false,
-							name: 'Strongly Correlated Electrons'
-						},
-						{
-							code: 'cond-mat.supr-con',
-							selected: false,
-							name: 'Superconductivity'
-						}]
-				}, /* cond-mat */
-				{
-					code: 'gr-qc',
-					selected: false,
-					name: 'General Relativity and Quantum Cosmology'
-				},
-				{
-					code: 'hep-ex',
-					selected: false,
-					name: 'High Energy Physics - Experiment'
-				},
-				{
-					code: 'hep-lat',
-					selected: false,
-					name: 'High Energy Physics - Lattice'
-				},
-				{
-					code: 'hep-ph',
-					selected: false,
-					name: 'High Energy Physics - Phenomenology'
-				},
-				{
-					code: 'hep-th',
-					selected: false,
-					name: 'High Energy Physics - Theory'
-				},
-				{
-					code: 'math-ph',
-					selected: false,
-					name: 'Mathematical Physics'
-				},
-				{
-					code: 'nucl-ex',
-					selected: false,
-					name: 'Nuclear Experiment'
-				},
-				{
-					code: 'nucl-th',
-					selected: false,
-					name: 'Nuclear Theory'
-				},
-				{
-					code: 'physics*',
-					selected: false,
-					name: 'Physics',
-					subareas: [
-						{
-							code: 'physics.acc-ph',
-							selected: false,
-							name: 'Accelerator Physics'
-						},
-						{
-							code: 'physics.ao-ph',
-							selected: false,
-							name: 'Atmospheric and Oceanic Physics'
-						},
-						{
-							code: 'physics.atom-ph',
-							selected: false,
-							name: 'Atomic Physics'
-						},
-						{
-							code: 'physics.atm-clus',
-							selected: false,
-							name: 'Atomic and Molecular Clusters'
-						},
-						{
-							code: 'physics.bio-ph',
-							selected: false,
-							name: 'Biological Physics'
-						},
-						{
-							code: 'physics.chem-ph',
-							selected: false,
-							name: 'Chemical Physics'
-						},
-						{
-							code: 'physics.class-ph',
-							selected: false,
-							name: 'Classical Physics'
-						},
-						{
-							code: 'physics.comp-ph',
-							selected: false,
-							name: 'Computational Physics'
-						},
-						{
-							code: 'physics.data-an',
-							selected: false,
-							name: 'Data Analysis, Statistics and Probability'
-						},
-						{
-							code: 'physics.flu-dyn',
-							selected: false,
-							name: 'Fluid Dynamics'
-						},
-						{
-							code: 'physics.gen-ph',
-							selected: false,
-							name: 'General Physics'
-						},
-						{
-							code: 'physics.geo-ph',
-							selected: false,
-							name: 'Geophysics'
-						},
-						{
-							code: 'physics.hist-ph',
-							selected: false,
-							name: 'History and Philosophy of Physics'
-						},
-						{
-							code: 'physics.ins-det',
-							selected: false,
-							name: 'Instrumentation and Detectors'
-						},
-						{
-							code: 'physics.med-ph',
-							selected: false,
-							name: 'Medical Physics'
-						},
-						{
-							code: 'physics.optics',
-							selected: false,
-							name: 'Optics'
-						},
-						{
-							code: 'physics.ed-ph',
-							selected: false,
-							name: 'Physics Education'
-						},
-						{
-							code: 'physics.soc-ph',
-							selected: false,
-							name: 'Physics and Society'
-						},
-						{
-							code: 'physics.plasma-ph',
-							selected: false,
-							name: 'Plasma Physics'
-						},
-						{
-							code: 'physics.pop-ph',
-							selected: false,
-							name: 'Popular Physics'
-						},
-						{
-							code: 'physics.space-ph',
-							selected: false,
-							name: 'Space Physics'
-						}]
-				}, /* physics */
-				{
-					code: 'quant-ph',
-					selected: false,
-					name: 'Quantum Physics'
-				}]
-		}, /* Physics */
-		{
-			name: 'Mathematics',
-			areas: [
-				{
-					code: 'math*',
-					selected: false,
-					name: 'Mathematics',
-					subareas: [
-						{
-							code: 'math.AG',
-							selected: false,
-							name: 'Algebraic Geometry'
-						},
-						{
-							code: 'math.AT',
-							selected: false,
-							name: 'Algebraic Topology'
-						},
-						{
-							code: 'math.AP',
-							selected: false,
-							name: 'Analysis of PDEs'
-						},
-						{
-							code: 'math.CT',
-							selected: false,
-							name: 'Category Theory'
-						},
-						{
-							code: 'math.CA',
-							selected: false,
-							name: 'Classical Analysis and ODEs'
-						},
-						{
-							code: 'math.CO',
-							selected: false,
-							name: 'Combinatorics'
-						},
-						{
-							code: 'math.AC',
-							selected: false,
-							name: 'Commutative Algebra'
-						},
-						{
-							code: 'math.CV',
-							selected: false,
-							name: 'Complex Variables'
-						},
-						{
-							code: 'math.DG',
-							selected: false,
-							name: 'Differential Geometry'
-						},
-						{
-							code: 'math.DS',
-							selected: false,
-							name: 'Dynamical Systems'
-						},
-						{
-							code: 'math.FA',
-							selected: false,
-							name: 'Functional Analysis'
-						},
-						{
-							code: 'math.GM',
-							selected: false,
-							name: 'General Mathematics'
-						},
-						{
-							code: 'math.GN',
-							selected: false,
-							name: 'General Topology'
-						},
-						{
-							code: 'math.GT',
-							selected: false,
-							name: 'Geometric Topology'
-						},
-						{
-							code: 'math.GR',
-							selected: false,
-							name: 'Group Theory'
-						},
-						{
-							code: 'math.HO',
-							selected: false,
-							name: 'History and Overview'
-						},
-						{
-							code: 'math.IT',
-							selected: false,
-							name: 'Information Theory'
-						},
-						{
-							code: 'math.KT',
-							selected: false,
-							name: 'K-Theory and Homology'
-						},
-						{
-							code: 'math.LO',
-							selected: false,
-							name: 'Logic'
-						},
-						{
-							code: 'math.MP',
-							selected: false,
-							name: 'Mathematical Physics'
-						},
-						{
-							code: 'math.MG',
-							selected: false,
-							name: 'Metric Geometry'
-						},
-						{
-							code: 'math.NT',
-							selected: false,
-							name: 'Number Theory'
-						},
-						{
-							code: 'math.NA',
-							selected: false,
-							name: 'Numerical Analysis'
-						},
-						{
-							code: 'math.OA',
-							selected: false,
-							name: 'Operator Algebras'
-						},
-						{
-							code: 'math.OC',
-							selected: false,
-							name: 'Optimization and Control'
-						},
-						{
-							code: 'math.PR',
-							selected: false,
-							name: 'Probability'
-						},
-						{
-							code: 'math.QA',
-							selected: false,
-							name: 'Quantum Algebra'
-						},
-						{
-							code: 'math.RT',
-							selected: false,
-							name: 'Representation Theory'
-						},
-						{
-							code: 'math.RA',
-							selected: false,
-							name: 'Rings and Algebras'
-						},
-						{
-							code: 'math.SP',
-							selected: false,
-							name: 'Spectral Theory'
-						},
-						{
-							code: 'math.ST',
-							selected: false,
-							name: 'Statistics Theory'
-						},
-						{
-							code: 'math.SG',
-							selected: false,
-							name: 'Symplectic Geometry'
-						}]
-				}]
-		}, /* Mathematics */
-		{
-			name: 'Quantitative Biology',
-			areas: [
-				{
-					code: 'q-bio*',
-					selected: false,
-					name: 'Quantitative Biology',
-					subareas: [
-						{
-							code: 'q-bio.BM',
-							selected: false,
-							name: 'Biomolecules'
-						},
-						{
-							code: 'q-bio.CB',
-							selected: false,
-							name: 'Cell Behavior'
-						},
-						{
-							code: 'q-bio.GN',
-							selected: false,
-							name: 'Genomics'
-						},
-						{
-							code: 'q-bio.MN',
-							selected: false,
-							name: 'Molecular Networks'
-						},
-						{
-							code: 'q-bio.NC',
-							selected: false,
-							name: 'Neurons and Cognition'
-						},
-						{
-							code: 'q-bio.OT',
-							selected: false,
-							name: 'Other Quatitative Biology'
-						},
-						{
-							code: 'q-bio.PE',
-							selected: false,
-							name: 'Populations and Evolution'
-						},
-						{
-							code: 'q-bio.QM',
-							selected: false,
-							name: 'Quantitative Methods'
-						},
-						{
-							code: 'q-bio.SC',
-							selected: false,
-							name: 'Subcellular Processes'
-						},
-						{
-							code: 'q-bio.TO',
-							selected: false,
-							name: 'Tissues and Organs'
-						}]
-				}]
-		}, /* Quantitative Biology */
-		{
-			name: 'Quantitative Finance',
-			areas: [
-				{
-					code: 'q-fin*',
-					selected: false,
-					name: 'Quantitative Finance',
-					subareas: [
-						{
-							code: 'q-fin.CP',
-							selected: false,
-							name: 'Computational Finance'
-						},
-						{
-							code: 'q-fin.EC',
-							selected: false,
-							name: 'Economics'
-						},
-						{
-							code: 'q-fin.GN',
-							selected: false,
-							name: 'General Finance'
-						},
-						{
-							code: 'q-fin.MF',
-							selected: false,
-							name: 'Mathematical Finance'
-						},
-						{
-							code: 'q-fin.PM',
-							selected: false,
-							name: 'Portfolio Management'
-						},
-						{
-							code: 'q-fin.PR',
-							selected: false,
-							name: 'Pricing of Securities'
-						},
-						{
-							code: 'q-fin.RM',
-							selected: false,
-							name: 'Risk Management'
-						},
-						{
-							code: 'q-fin.ST',
-							selected: false,
-							name: 'Statistical Finance'
-						},
-						{
-							code: 'q-fin.TR',
-							selected: false,
-							name: 'Trading and Market Microstructure'
-						}]
-				}]
-		}, /* Quant. Fin. */
-		{
-			name: 'Statistics',
-			areas: [
-				{
-					code: 'stat*',
-					selected: false,
-					name: 'Statistics',
-					subareas: [
-						{
-							code: 'stat.AP',
-							selected: false,
-							name: 'Applications'
-						},
-						{
-							code: 'stat.CO',
-							selected: false,
-							name: 'Computation'
-						},
-						{
-							code: 'stat.ML',
-							selected: false,
-							name: 'Machine Learning'
-						},
-						{
-							code: 'stat.ME',
-							selected: false,
-							name: 'Methodology'
-						},
-						{
-							code: 'stat.OT',
-							selected: false,
-							name: 'Other Statistics'
-						},
-						{
-							code: 'stat.TH',
-							selected: false,
-							name: 'Statistics Theory'
-						}]
-				}]
-		}, /* Statistics */
-		{
-			name: 'Electrical Engineerign and Systems Science',
-			areas: [
-				{
-					code: 'eess*',
-					selected: false,
-					name: 'Electrical Engineering and Systems Scicence',
-					subareas: [
-						{
-							code: 'eess.AS',
-							selected: false,
-							name: 'Audio and Speech Processing'
-						},
-						{
-							code: 'eess.IV',
-							selected: false,
-							name: 'Image and Video Processing'
-						},
-						{
-							code: 'eess.SP',
-							selected: false,
-							name: 'Signal Processing'
-						},
-						{
-							code: 'eess.SY',
-							selected: false,
-							name: 'Systems and Control'
-						}]
-				}]
-		}, /* Electrical Engineering and Systems Science */
-		{
-			name: 'Economics',
-			areas: [
-				{
-					code: 'econ*',
-					selected: false,
-					name: 'Economics',
-					subareas: [
-						{
-							code: 'econ.EM',
-							selected: false,
-							name: 'Econometrics'
-						},
-						{
-							code: 'econ.GN',
-							selected: false,
-							name: 'General Economics'
-						},
-						{
-							code: 'econ.TH',
-							selected: false,
-							name: 'Theoretical Economics'
-						}]
-				}]
-		}, /* Economics */
-		{
-			name: 'Nonlinear Sciences',
-			areas: [
-				{
-					code: 'nlin*',
-					selected: false,
-					name: 'Nonlinear Sciences',
-					subareas: [
-						{
-							code: 'nlin.AO',
-							selected: false,
-							name: 'Adaptation and Self-Organizing Systems'
-						},
-						{
-							code: 'nlin.CG',
-							selected: false,
-							name: 'Cellular Automata and Lattice Gases'
-						},
-						{
-							code: 'nlin.CD',
-							selected: false,
-							name: 'Chaotic Dynamics'
-						},
-						{
-							code: 'nlin.SI',
-							selected: false,
-							name: 'Exactly Solvable and Integrable Systems'
-						},
-						{
-							code: 'nlin.PS',
-							selected: false,
-							name: 'Pattern Formation and Solitons'
-						}]
-				}]
-		}, /* Nonlinear Sciences */
-	];
-};
+export const ArxivCategories: ArchiveHeader[] = [
+	{
+		name: 'Computer Science',
+		code: 'cs',
+		children: [
+			{
+				code: 'cs.AI',
+				name: 'Artificial Intelligence',
+			},
+			{
+				code: 'cs.AR',
+				name: 'Hardware Architecture',
+			},
+			{
+				code: 'cs.CC',
+				name: 'Computational Complexity',
+			},
+			{
+				code: 'cs.CE',
+				name: 'Computation Engineering, Finance and Science',
+			},
+			{
+				code: 'cs.CG',
+				name: 'Computational Geometry',
+			},
+			{
+				code: 'cs.CL',
+				name: 'Computation and Language',
+			},
+			{
+				code: 'cs.CR',
+				name: 'Cryptography and Security',
+			},
+			{
+				code: 'cs.CV',
+				name: 'Computer Vision and Pattern Recognition',
+			},
+			{
+				code: 'cs.CY',
+				name: 'Computers and Society',
+			},
+			{
+				code: 'cs.DB',
+				name: 'Databases',
+			},
+			{
+				code: 'cs.DC',
+				name: 'Distributed, Parallel, and Cluster Computing',
+			},
+			{
+				code: 'cs.DL',
+				name: 'Digital Libraries',
+			},
+			{
+				code: 'cs.DM',
+				name: 'Discrete Mathematics',
+			},
+			{
+				code: 'cs.DS',
+				name: 'Data Structures and Algorithms',
+			},
+			{
+				code: 'cs.ET',
+				name: 'Emerging Technologies',
+			},
+			{
+				code: 'cs.FL',
+				name: 'Formal Languages and Automata Theory',
+			},
+			{
+				code: 'cs.GL',
+				name: 'General Literature',
+			},
+			{
+				code: 'cs.GR',
+				name: 'Graphics',
+			},
+			{
+				code: 'cs.GT',
+				name: 'Computer Science and Game Theory',
+			},
+			{
+				code: 'cs.HC',
+				name: 'Human-Computer Interaction'
+			},
+			{
+				code: 'cs.IR',
+				name: 'Information Retrieval'
+			},
+			{
+				code: 'cs.IT',
+				name: 'Information Theory'
+			},
+			{
+				code: 'cs.LG',
+				name: 'Machine Learning'
+			},
+			{
+				code: 'cs.LO',
+				name: 'Logic in Computer Science'
+			},
+			{
+				code: 'cs.MA',
+				name: 'Multiagent Systems'
+			},
+			{
+				code: 'cs.MM',
+				name: 'Multimedia'
+			},
+			{
+				code: 'cs.MS',
+				name: 'Mathematical Software'
+			},
+			{
+				code: 'cs.NA',
+				name: 'Numerical Analysis'
+			},
+			{
+				code: 'cs.NE',
+				name: 'Neural and Evolutionary Computing'
+			},
+			{
+				code: 'cs.NI',
+				name: 'Networking and Internet Architecture'
+			},
+			{
+				code: 'cs.OH',
+				name: 'Other Computer Science'
+			},
+			{
+				code: 'cs.OS',
+				name: 'Operating System'
+			},
+			{
+				code: 'cs.PF',
+				name: 'Performance'
+			},
+			{
+				code: 'cs.PL',
+				name: 'Programming Languages'
+			},
+			{
+				code: 'cs.RO',
+				name: 'Robotics'
+			},
+			{
+				code: 'cs.SC',
+				name: 'Symbolic Computation'
+			},
+			{
+				code: 'cs.SD',
+				name: 'Sound'
+			},
+			{
+				code: 'cs.SE',
+				name: 'Software Engineering'
+			},
+			{
+				code: 'cs.SI',
+				name: 'Social and Information Networks'
+			},
+			{
+				code: 'cs.SY',
+				name: 'Systems and Control'
+			}
+		]
+	},
+	{
+		name: 'Economics',
+		code: 'econ',
+		children: [
+			{
+				code: 'econ.EM',
+				name: 'Econometrics'
+			},
+			{
+				code: 'econ.GN',
+				name: 'General Economics'
+			},
+			{
+				code: 'econ.TH',
+				name: 'Theoretical Economics'
+			}
+		]
+	},
+	{
+		name: 'Electrical Engineering and Systems Scicence',
+		code: 'eess',
+		children: [
+			{
+				code: 'eess.AS',
+				name: 'Audio and Speech Processing'
+			},
+			{
+				code: 'eess.IV',
+				name: 'Image and Video Processing'
+			},
+			{
+				code: 'eess.SP',
+				name: 'Signal Processing'
+			},
+			{
+				code: 'eess.SY',
+				name: 'Systems and Control'
+			}
+		]
+	},
+	{
+		name: 'Mathematics',
+		code: 'math',
+		children: [
+			{
+				code: 'math.AC',
+				name: 'Commutative Algebra'
+			},
+			{
+				code: 'math.AG',
+				name: 'Algebraic Geometry'
+			},
+			{
+				code: 'math.AP',
+				name: 'Analysis of PDEs'
+			},
+			{
+				code: 'math.AT',
+				name: 'Algebraic Topology'
+			},
+			{
+				code: 'math.CA',
+				name: 'Classical Analysis and ODEs'
+			},
+			{
+				code: 'math.CO',
+				name: 'Combinatorics'
+			},
+			{
+				code: 'math.CT',
+				name: 'Category Theory'
+			},
+			{
+				code: 'math.CV',
+				name: 'Complex Variables'
+			},
+			{
+				code: 'math.DG',
+				name: 'Differential Geometry'
+			},
+			{
+				code: 'math.DS',
+				name: 'Dynamical Systems'
+			},
+			{
+				code: 'math.FA',
+				name: 'Functional Analysis'
+			},
+			{
+				code: 'math.GM',
+				name: 'General Mathematics'
+			},
+			{
+				code: 'math.GN',
+				name: 'General Topology'
+			},
+			{
+				code: 'math.GR',
+				name: 'Group Theory'
+			},
+			{
+				code: 'math.GT',
+				name: 'Geometric Topology'
+			},
+			{
+				code: 'math.HO',
+				name: 'History and Overview'
+			},
+			{
+				code: 'math.IT',
+				name: 'Information Theory'
+			},
+			{
+				code: 'math.KT',
+				name: 'K-Theory and Homology'
+			},
+			{
+				code: 'math.LO',
+				name: 'Logic'
+			},
+			{
+				code: 'math.MG',
+				name: 'Metric Geometry'
+			},
+			{
+				code: 'math.MP',
+				name: 'Mathematical Physics'
+			},
+			{
+				code: 'math.NA',
+				name: 'Numerical Analysis'
+			},
+			{
+				code: 'math.NT',
+				name: 'Number Theory'
+			},
+			{
+				code: 'math.OA',
+				name: 'Operator Algebras'
+			},
+			{
+				code: 'math.OC',
+				name: 'Optimization and Control'
+			},
+			{
+				code: 'math.PR',
+				name: 'Probability'
+			},
+			{
+				code: 'math.QA',
+				name: 'Quantum Algebra'
+			},
+			{
+				code: 'math.RA',
+				name: 'Rings and Algebras'
+			},
+			{
+				code: 'math.RT',
+				name: 'Representation Theory'
+			},
+			{
+				code: 'math.SG',
+				name: 'Symplectic Geometry'
+			},
+			{
+				code: 'math.SP',
+				name: 'Spectral Theory'
+			},
+			{
+				code: 'math.ST',
+				name: 'Statistics Theory'
+			}
+		]
+	},
+	{
+		name: 'Physics',
+		code: '',
+		children: [
+			{
+				name: 'Astrophysics',
+				code: 'astro-ph',
+				children: [
+					{
+						code: 'astro-ph.CO',
+						name: 'Cosmology and Nongalactic Astrophysics'
+					},
+					{
+						code: 'astro-ph.EP',
+						name: 'Earth and Planetary Astrophysics'
+					},
+					{
+						code: 'astro-ph.GA',
+						name: 'Galactic Astrophysics'
+					},
+					{
+						code: 'astro-ph.HE',
+						name: 'High Energy Astrophysical Phenomena'
+					},
+					{
+						code: 'astro-ph.IM',
+						name: 'Instrumentation and Methods for Astrophysics'
+					},
+					{
+						code: 'astro-ph.SR',
+						name: 'Solar and Stellar Astrophysics'
+					}
+				]
+			},
+			{
+				name: 'Condensed Matter',
+				code: 'cond-mat',
+				children: [
+					{
+						code: 'cond-mat.dis-nn',
+						name: 'Disordered Systems and Neural Networks'
+					},
+					{
+						code: 'cond-mat.mes-hall',
+						name: 'Mesoscale and Nanoscale Physics'
+					},
+					{
+						code: 'cond-mat.mtrl-sci',
+						name: 'Materials Science'
+					},
+					{
+						code: 'cond-mat.other',
+						name: 'Other Condensed Matter'
+					},
+					{
+						code: 'cond-mat.quant-gas',
+						name: 'Quantum Gases'
+					},
+					{
+						code: 'cond-mat.soft',
+						name: 'Soft Condensed Matter'
+					},
+					{
+						code: 'cond-mat.stat-mech',
+						name: 'Statistical Mechanics'
+					},
+					{
+						code: 'cond-mat.str-el',
+						name: 'Strongly Correlated Electrons'
+					},
+					{
+						code: 'cond-mat.supr-con',
+						name: 'Superconductivity'
+					}
+				]
+			},
+			{
+				code: 'gr-qc',
+				name: 'General Relativity and Quantum Cosmology'
+			},
+			{
+				code: 'hep-ex',
+				name: 'High Energy Physics - Experiment'
+			},
+			{
+				code: 'hep-lat',
+				name: 'High Energy Physics - Lattice'
+			},
+			{
+				code: 'hep-ph',
+				name: 'High Energy Physics - Phenomenology'
+			},
+			{
+				code: 'hep-th',
+				name: 'High Energy Physics - Theory'
+			},
+			{
+				code: 'math-ph',
+				name: 'Mathematical Physics'
+			},
+			{
+				name: 'Nonlinear Sciences',
+				code: 'nlin',
+				children: [
+					{
+						code: 'nlin.AO',
+						name: 'Adaptation and Self-Organizing Systems'
+					},
+					{
+						code: 'nlin.CD',
+						name: 'Chaotic Dynamics'
+					},
+					{
+						code: 'nlin.CG',
+						name: 'Cellular Automata and Lattice Gases'
+					},
+					{
+						code: 'nlin.PS',
+						name: 'Pattern Formation and Solitons'
+					},
+					{
+						code: 'nlin.SI',
+						name: 'Statistics and Informatics'
+					}
+				]
+			},
+			{
+				code: 'nucl-ex',
+				name: 'Nuclear Experiment'
+			},
+			{
+				code: 'nucl-th',
+				name: 'Nuclear Theory'
+			},
+			{
+				name: 'Physics',
+				code: 'physics',
+				children: [
+					{
+						code: 'physics.acc-ph',
+						name: 'Accelerator Physics'
+					},
+					{
+						code: 'physics.ao-ph',
+						name: 'Atmospheric and Oceanic Physics'
+					},
+					{
+						code: 'physics.app-ph',
+						name: 'Applied Physics'
+					},
+					{
+						code: 'physics.atm-clus',
+						name: 'Atomic and Molecular Clusters'
+					},
+					{
+						code: 'physics.atom-ph',
+						name: 'Atomic Physics'
+					},
+					{
+						code: 'physics.bio-ph',
+						name: 'Biological Physics'
+					},
+					{
+						code: 'physics.chem-ph',
+						name: 'Chemical Physics'
+					},
+					{
+						code: 'physics.class-ph',
+						name: 'Classical Physics'
+					},
+					{
+						code: 'physics.comp-ph',
+						name: 'Computational Physics'
+					},
+					{
+						code: 'physics.data-an',
+						name: 'Data Analysis, Statistics and Probability'
+					},
+					{
+						code: 'physics.ed-ph',
+						name: 'Physics Education'
+					},
+					{
+						code: 'physics.flu-dyn',
+						name: 'Fluid Dynamics'
+					},
+					{
+						code: 'physics.gen-ph',
+						name: 'General Physics'
+					},
+					{
+						code: 'physics.geo-ph',
+						name: 'Geophysics'
+					},
+					{
+						code: 'physics.hist-ph',
+						name: 'History of Physics'
+					},
+					{
+						code: 'physics.ins-det',
+						name: 'Instrumentation and Detectors'
+					},
+					{
+						code: 'physics.med-ph',
+						name: 'Medical Physics'
+					},
+					{
+						code: 'physics.optics',
+						name: 'Optics'
+					},
+					{
+						code: 'physics.plasm-ph',
+						name: 'Plasma Physics'
+					},
+					{
+						code: 'physics.pop-ph',
+						name: 'Popular Physics'
+					},
+					{
+						code: 'physics.soc-ph',
+						name: 'Physics and Society'
+					},
+					{
+						code: 'physics.space-ph',
+						name: 'Space Physics'
+					}
+				]
+			},
+			{
+				code: 'quant-ph',
+				name: 'Quantum Physics'
+			}
+		]
+	},
+	{
+		name: 'Quantitative Biology',
+		code: 'q-bio',
+		children: [
+			{
+				code: 'q-bio.BM',
+				name: 'Biomolecules'
+			},
+			{
+				code: 'q-bio.CB',
+				name: 'Cell Behavior'
+			},
+			{
+				code: 'q-bio.GN',
+				name: 'Genomics'
+			},
+			{
+				code: 'q-bio.MN',
+				name: 'Molecular Networks'
+			},
+			{
+				code: 'q-bio.NC',
+				name: 'Neurons and Cognition'
+			},
+			{
+				code: 'q-bio.OT',
+				name: 'Other Quantitative Biology'
+			},
+			{
+				code: 'q-bio.PE',
+				name: 'Populations and Evolution'
+			},
+			{
+				code: 'q-bio.QM',
+				name: 'Quantitative Methods'
+			},
+			{
+				code: 'q-bio.SC',
+				name: 'Subcellular Processes'
+			},
+			{
+				code: 'q-bio.TO',
+				name: 'Tissues and Organs'
+			}
+		]
+	},
+	{
+		name: 'Quantitative Finance',
+		code: 'q-fin',
+		children: [
+			{
+				code: 'q-fin.CP',
+				name: 'Computational Finance'
+			},
+			{
+				code: 'q-fin.EC',
+				name: 'Economics'
+			},
+			{
+				code: 'q-fin.GN',
+				name: 'General Finance'
+			},
+			{
+				code: 'q-fin.MF',
+				name: 'Mathematical Finance'
+			},
+			{
+				code: 'q-fin.PM',
+				name: 'Portfolio Management'
+			},
+			{
+				code: 'q-fin.PR',
+				name: 'Pricing of Securities'
+			},
+			{
+				code: 'q-fin.RM',
+				name: 'Risk Management'
+			},
+			{
+				code: 'q-fin.ST',
+				name: 'Statistical Finance'
+			},
+			{
+				code: 'q-fin.TR',
+				name: 'Trading and Market Microstructure'
+			}
+		]
+	},
+	{
+		name: 'Statistics',
+		code: 'stat',
+		children: [
+			{
+				code: 'stat.AP',
+				name: 'Applications'
+			},
+			{
+				code: 'stat.CO',
+				name: 'Computation'
+			},
+			{
+				code: 'stat.ME',
+				name: 'Methodology'
+			},
+			{
+				code: 'stat.ML',
+				name: 'Machine Learning'
+			},
+			{
+				code: 'stat.OT',
+				name: 'Other Statistics'
+			},
+			{
+				code: 'stat.TH',
+				name: 'Statistics Theory'
+			}
+		]
+	}
+]
