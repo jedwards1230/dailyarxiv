@@ -20,7 +20,7 @@ export async function fetchArchive(url: string) {
 }
 
 function cleanData(entry: any) {
-	console.log(entry)
+	//console.log(entry)
 	const paper: ArchiveResult = {
 		author: entry.author,
 		category: entry.category,

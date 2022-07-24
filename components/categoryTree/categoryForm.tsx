@@ -30,7 +30,7 @@ const CategoryForm = (props: {
                 <ListItemText primary={props.section.name} />
                 {open ? <ExpandLess /> : <ExpandMore />}
             </ListItemButton>
-            <Collapse in={open} timeout="auto" unmountOnExit>
+            <Collapse in={open} timeout="auto">
                 <List 
                     disablePadding
                     sx={{ width: '100%', bgcolor: 'background.paper' }}>
