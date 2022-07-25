@@ -1,24 +1,32 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import CalendarComponent from '../components/calendar/calendar'
-import { fetchArchive, queryToUrl, ArxivCategories } from '../scripts/apiTools'
+import { fetchArchive, queryToUrl, ArxivCategories, buildQuery } from '../scripts/apiTools'
 import styles from '../styles/Home.module.css'
 import { FormProvider, useForm } from 'react-hook-form'
-import { Button, List } from '@mui/material'
+import { Button } from '@mui/material'
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { useAppContext } from './_app'
-import CategoryForm from '../components/categoryTree/categoryForm'
+import CategoryFormField from '../components/categoryForm/categoryFormField'
+
+type CategoryForm = {
+	categories: ArchiveHeader[]
+	datepicker: string
+}
 
 const Home: NextPage = () => {
 	const router = useRouter();
-	const defaultValues = { categories: ArxivCategories }
-	const methods = useForm({ defaultValues })
+	const defaultValues = {
+		categories: ArxivCategories
+	}
+	const methods = useForm<CategoryForm>({ defaultValues })
 	const appContext = useAppContext();
 
 	const onSubmit = async (data: any) => {
-		console.log(data);
-		const url = queryToUrl('cat:astro-ph.GA+OR+cat:math.AT+OR+cat:math.CT', data.datepicker);
+		console.log(data)
+		const query = buildQuery(data.categories);
+		const url = queryToUrl(query, data.datepicker);
 		console.log(url);
 		const response = await fetchArchive(url);
 		appContext.results = response as ArchiveResult[];
@@ -48,12 +56,7 @@ const Home: NextPage = () => {
 					</div>
 
 					<div className={styles.categoryTree}>
-						<List
-							sx={{ width: '100%', bgcolor: 'background.paper' }}>
-							{ArxivCategories.map((category, i) => {
-								return <CategoryForm key={i} idx={i} section={category} />
-							})}
-						</List>
+						<CategoryFormField />
 
 						<Button
 							style={{ marginTop: '4rem' }}
@@ -61,16 +64,6 @@ const Home: NextPage = () => {
 							variant="contained">Submit</Button>
 					</div>
 				</FormProvider>
-
-				<footer className={styles.footer}>
-					<a
-						href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						by Justin Edwards
-					</a>
-				</footer>
 			</div>
 		</div>
 	)

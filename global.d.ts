@@ -1,7 +1,8 @@
 type ArchiveHeader = {
-	name: string,
+	desc: string,
 	code: string,
-	children?: ArchiveHeader[]
+	checked: boolean,
+	categories?: ArchiveHeader[]
 }
 
 type ArchiveResult = {

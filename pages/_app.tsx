@@ -22,7 +22,7 @@ const AppContext = createContext({
 function MyApp(props: MyAppProps) {
 	const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 	const prefersDarkMode = useMediaQuery<boolean>('(prefers-color-scheme: dark', { noSsr: true });
-	const [mode, setMode] = useState<PaletteMode>(prefersDarkMode ? 'dark' : 'light');
+	const [mode, setMode] = useState<PaletteMode>('dark');
 	let sharedState = useContext(AppContext);
 
 	useEffect(() => {
