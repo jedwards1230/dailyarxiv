@@ -12,7 +12,7 @@ import CategoryFormField from '../components/categoryForm/categoryFormField'
 
 type CategoryForm = {
 	categories: ArchiveHeader[]
-	datepicker: string
+	datepicker: Date
 }
 
 const Home: NextPage = () => {
@@ -23,7 +23,7 @@ const Home: NextPage = () => {
 	const methods = useForm<CategoryForm>({ defaultValues })
 	const appContext = useAppContext();
 
-	const onSubmit = async (data: any) => {
+	const onSubmit = async (data: CategoryForm) => {
 		console.log(data)
 		const query = buildQuery(data.categories);
 		const url = queryToUrl(query, data.datepicker);
@@ -61,7 +61,7 @@ const Home: NextPage = () => {
 						<Button
 							style={{ marginTop: '4rem' }}
 							onClick={methods.handleSubmit(onSubmit)}
-							variant="contained">Submit</Button>
+							variant="contained">Search</Button>
 					</div>
 				</FormProvider>
 			</div>

@@ -1,6 +1,6 @@
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import { ListItemButton, Checkbox, ListItemText, Collapse, List, ListItem } from '@mui/material';
-import React, { FunctionComponent, useState } from 'react';
+import React, { FunctionComponent, useEffect, useState } from 'react';
 import { Controller } from 'react-hook-form';
 import useCategoryFormField from './useCategoryFormField';
 
@@ -11,11 +11,12 @@ interface Props {
 const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
     const {
         fields,
-        register,
         control,
-        checkedInputPath: checkedInputPath
+        categoryArrayInputPath: categoryArrayInputPath,
     } = useCategoryFormField(prefix);
+
     const [open, setOpen] = useState(new Array(fields.length).fill(false));
+    const [initialOpen, setInitialOpen] = useState(true);
 
     const handleClick = (i: number) => {
         const newOpen = [...open];
@@ -23,32 +24,35 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
         setOpen(newOpen);
     };
 
+    useEffect(() => {
+        setInitialOpen(false);
+    }, []);
+
     return (
         <List
             disablePadding
             sx={{ width: '100%', bgcolor: 'background.paper' }}>
-            {fields.map((header: ArchiveHeader, index: number) => {
+            {fields.map((header, index) => {
+                const code: string[] = header.code.split('.');
                 const hasChildren = header.categories && header.categories.length > 0;
-                
-                console.log(checkedInputPath)
-                console.log(header.desc)
+                const fieldId = categoryArrayInputPath + `[${index}].checked` as 'checked';
 
                 return (
                     <div key={header.code}>
                         <ListItemButton>
                             <Controller
-                                name={checkedInputPath}
+                                name={fieldId}
                                 control={control}
-                                render={({ field }) => (
-                                    <Checkbox
-                                        edge="start"
-                                        onChange={(e) => field.onChange(e.target.checked)}
-                                         />
-                                )}
+                                render={({ field }) => {
+                                    return (
+                                        <Checkbox
+                                            edge="start"
+                                            onChange={(e) => field.onChange(e.target.checked)}
+                                            checked={field.value}
+                                        />
+                                    )
+                                }}
                             />
-                            {/* <Checkbox
-                                edge="start"
-                                {...register(field.checked)} /> */}
                             <ListItemText primary={header.desc} />
                             {hasChildren &&
                                 <div onClick={() => handleClick(index)}>
@@ -56,7 +60,7 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
                                 </div>
                             }
                         </ListItemButton>
-                        {hasChildren &&
+                        {(hasChildren && !initialOpen) &&
                             <Collapse in={open[index]} timeout="auto">
                                 <List
                                     disablePadding

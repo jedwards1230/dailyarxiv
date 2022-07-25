@@ -37,7 +37,7 @@ function cleanData(entry: any) {
 	return paper
 }
 
-export function buildQuery(data: any): string {
+export function buildQuery(data: ArchiveHeader[]): string {
 	//console.log(data);
 	return 'cat:astro-ph.GA+OR+cat:math.AT+OR+cat:math.CT'
 }
@@ -102,7 +102,7 @@ export const ArxivCategories: ArchiveHeader[] = [
 	{
 		desc: 'Computer Science',
 		code: 'cs',
-		checked: true,
+		checked: false,
 		categories: [
 			{
 				code: 'cs.AI',

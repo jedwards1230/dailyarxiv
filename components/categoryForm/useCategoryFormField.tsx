@@ -1,7 +1,8 @@
 import { useFieldArray, useFormContext } from 'react-hook-form';
 
-// redefine due to circular reference error
+// redefine due to circular reference error in react-hook-form
 type ArchiveHeader = {
+    id: string,
     desc: string,
     code: string,
     checked: boolean,
@@ -11,7 +12,6 @@ type ArchiveHeader = {
 function useCategoryFormField(prefix: string) {
     const { control, register } = useFormContext<ArchiveHeader>();
 
-    const checkedInputPath = `${prefix}checked` as 'checked';
     const categoryArrayInputPath = `${prefix}categories` as 'categories';
 
     const { fields } = useFieldArray({
@@ -23,7 +23,7 @@ function useCategoryFormField(prefix: string) {
         fields,
         register,
         control,
-        checkedInputPath: checkedInputPath,
+        categoryArrayInputPath: categoryArrayInputPath,
     };
 }
 
