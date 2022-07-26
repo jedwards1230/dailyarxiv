@@ -24,6 +24,14 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
         setOpen(newOpen);
     };
 
+    const checkIndeterminate = (index: number) => {
+        // * watch() is tagged to return any[], but this returns a single object. need to ignore error and it works fine.
+        // @ts-ignore: Unreachable code error
+        const entry = watch(`${prefix}categories.${index}` as "categories") as ArchiveHeader;
+
+        return (!entry.categories!.every((child) => child.checked) && !entry.categories!.every((child) => !child.checked))
+    }
+
     return (
         <List
             disablePadding
@@ -31,13 +39,7 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
             {fields.map((header: ArchiveHeader, index) => {
                 const hasChildren = header.categories && header.categories.length > 0;
                 const fieldId = categoryArrayInputPath + `[${index}].checked` as 'checked';
-                let indeterminate = false;
-                if (hasChildren) {
-                    // * watch() is tagged to return any[], but this returns a single object. need to ignore error and it works fine.
-                    // @ts-ignore: Unreachable code error
-                    const children = watch(`${prefix}categories.${index}` as "categories") as ArchiveHeader;
-                    indeterminate = !children.categories!.every((child) => child.checked) && !children.categories!.every((child) => !child.checked);
-                }
+                const indeterminate = hasChildren ? checkIndeterminate(index) : false;
 
                 return (
                     <div key={header.code}>
@@ -64,7 +66,6 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
                                 <div onClick={() => handleClick(index)}>
                                     {open[index] ? <ExpandLess /> : <ExpandMore />}
                                 </div>
-
                             }
                         </ListItemButton>
                         {hasChildren &&

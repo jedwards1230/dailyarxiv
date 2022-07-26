@@ -6,7 +6,6 @@ import { useEffect, useMemo, useState, createContext, useContext } from 'react';
 import createEmotionCache from '../scripts/createEmotionCache';
 import { CacheProvider, EmotionCache } from '@emotion/react';
 import { buildTheme } from '../scripts/theme';
-//import Script from 'next/script';
 
 // Client-side cache, shared for the whole session of the user in the browser.
 const clientSideEmotionCache = createEmotionCache();
@@ -48,7 +47,7 @@ function MyApp(props: MyAppProps) {
 }
 
 /** Used to fade between page changes */
-function TransitionLayout(props: {
+/* function TransitionLayout(props: {
 	children: React.ReactNode;
 }) {
 	const [displayChildren, setDisplayChildren] = useState(props.children);
@@ -75,7 +74,7 @@ function TransitionLayout(props: {
 			{displayChildren}
 		</div>
 	);
-}
+} */
 
 export function useAppContext() {
 	return useContext(AppContext);

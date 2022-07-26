@@ -10,7 +10,7 @@ type ArchiveHeader = {
 }
 
 function useCategoryFormField(prefix: string) {
-    const { control, register, watch } = useFormContext<ArchiveHeader>();
+    const { control, watch } = useFormContext<ArchiveHeader>();
 
     const categoryArrayInputPath = `${prefix}categories` as 'categories';
 

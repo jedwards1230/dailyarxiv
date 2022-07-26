@@ -8,9 +8,6 @@ export async function fetchArchive(url: string) {
 		const response = await fetch(url);
 		const xml = await response.text();
 		const json = await parser.parseStringPromise(xml);
-		/* const papers: ArchiveResult[] = json.feed.entry.map((entry: any) => {
-			return cleanData(entry);
-		}); */
 		const papers: ArchiveResult[] = json.feed.entry.map((e: any) => cleanData(e));
 
 		return papers
@@ -20,7 +17,6 @@ export async function fetchArchive(url: string) {
 }
 
 function cleanData(entry: any) {
-	//console.log(entry)
 	const paper: ArchiveResult = {
 		author: entry.author,
 		category: entry.category,
@@ -38,8 +34,45 @@ function cleanData(entry: any) {
 }
 
 export function buildQuery(data: ArchiveHeader[]): string {
-	console.log(data);
-	return 'cat:astro-ph.GA+OR+cat:math.AT+OR+cat:math.CT'
+	const selections = filterResults(data);
+	// loop through selections and build query
+	// query has the format of:
+	// cat:${key}.${value[0]}+cat:${key}.${value[1]}+...+cat:${key}.${value[n]}
+	// join them with '+OR+' unless its the last item
+	const query = Object.keys(selections).map(key => {
+		const values = selections[key];
+		return values.map((value: string) => `cat:${key}.${value}`).join('+OR+');
+	}).join('+OR+');
+	return query
+}
+
+/* 
+	recursive function to find which section per code was selected 
+	returns object in the format of: {
+		'astro-ph': [GA, GP, ...],
+		'stat': [ST, ...],
+	}
+*/
+function filterResults(results: ArchiveHeader[]): any {
+	const selections = {} as any;
+	
+	results.forEach(result => {
+		if (result.categories) {
+			const selection = filterResults(result.categories);
+			Object.keys(selection).forEach(key => {
+				if (!selections[key]) selections[key] = [];
+				selections[key] = selections[key].concat(selection[key]);
+			});
+		} else if (result.checked) {
+			const codes = result.code.split('.');
+			if (codes[1]) {
+				if (!selections[codes[0]]) selections[codes[0]] = [];
+				selections[codes[0]].push(codes[1]);
+			}
+		}
+	})
+	
+	return selections;
 }
 
 export function queryToUrl(query: string, date: Date) {

@@ -55,7 +55,7 @@ const Results: NextPage = () => {
                                         </Typography>
                                         <MUILink
                                             sx={{ ml: 'auto' }}
-                                            href={result.id[0]}
+                                            href={result.id}
                                             target="_blank"
                                             rel="noopener noreferrer">Open</MUILink>
                                     </CardActions>
