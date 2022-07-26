@@ -38,7 +38,7 @@ function cleanData(entry: any) {
 }
 
 export function buildQuery(data: ArchiveHeader[]): string {
-	//console.log(data);
+	console.log(data);
 	return 'cat:astro-ph.GA+OR+cat:math.AT+OR+cat:math.CT'
 }
 

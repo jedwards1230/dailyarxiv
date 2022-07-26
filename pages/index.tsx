@@ -17,14 +17,11 @@ type CategoryForm = {
 
 const Home: NextPage = () => {
 	const router = useRouter();
-	const defaultValues = {
-		categories: ArxivCategories
-	}
+	const defaultValues = { categories: ArxivCategories }
 	const methods = useForm<CategoryForm>({ defaultValues })
 	const appContext = useAppContext();
 
 	const onSubmit = async (data: CategoryForm) => {
-		console.log(data)
 		const query = buildQuery(data.categories);
 		const url = queryToUrl(query, data.datepicker);
 		console.log(url);
