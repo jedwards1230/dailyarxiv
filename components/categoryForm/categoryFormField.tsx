@@ -11,12 +11,12 @@ interface Props {
 const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
     const {
         fields,
+        watch,
         control,
         categoryArrayInputPath: categoryArrayInputPath,
     } = useCategoryFormField(prefix);
 
     const [open, setOpen] = useState(new Array(fields.length).fill(false));
-    const [initialOpen, setInitialOpen] = useState(true);
 
     const handleClick = (i: number) => {
         const newOpen = [...open];
@@ -24,18 +24,20 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
         setOpen(newOpen);
     };
 
-    useEffect(() => {
-        setInitialOpen(false);
-    }, []);
-
     return (
         <List
             disablePadding
             sx={{ width: '100%', bgcolor: 'background.paper' }}>
-            {fields.map((header, index) => {
-                const code: string[] = header.code.split('.');
+            {fields.map((header: ArchiveHeader, index) => {
                 const hasChildren = header.categories && header.categories.length > 0;
                 const fieldId = categoryArrayInputPath + `[${index}].checked` as 'checked';
+                let indeterminate = false;
+                if (hasChildren) {
+                    // * watch() is tagged to return any[], but this returns a single object. need to ignore error and it works fine.
+                    // @ts-ignore: Unreachable code error
+                    const children = watch(`${prefix}categories.${index}` as "categories") as ArchiveHeader;
+                    indeterminate = !children.categories!.every((child) => child.checked) && !children.categories!.every((child) => !child.checked);
+                }
 
                 return (
                     <div key={header.code}>
@@ -44,11 +46,15 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
                                 name={fieldId}
                                 control={control}
                                 render={({ field }) => {
+                                    const value = hasChildren
+                                        ? header.categories!.every((child: ArchiveHeader) => child.checked)
+                                        : field.value
                                     return (
                                         <Checkbox
                                             edge="start"
                                             onChange={(e) => field.onChange(e.target.checked)}
                                             checked={field.value}
+                                            indeterminate={indeterminate}
                                         />
                                     )
                                 }}
@@ -58,10 +64,11 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
                                 <div onClick={() => handleClick(index)}>
                                     {open[index] ? <ExpandLess /> : <ExpandMore />}
                                 </div>
+
                             }
                         </ListItemButton>
-                        {(hasChildren && !initialOpen) &&
-                            <Collapse in={open[index]} timeout="auto">
+                        {hasChildren &&
+                            <Collapse in={open[index]} timeout="auto" unmountOnExit>
                                 <List
                                     disablePadding
                                     sx={{ width: '100%', bgcolor: 'background.paper' }}>
