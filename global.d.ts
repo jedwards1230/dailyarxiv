@@ -18,3 +18,7 @@ type ArchiveResult = {
 	title: string,
 	updated: string,
 }
+
+type CategorySelection = {
+	[key: string]: string[]
+}

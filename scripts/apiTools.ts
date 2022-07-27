@@ -37,6 +37,7 @@ function cleanData(entry: any) {
 
 /** Build query based on category selections */
 export function buildQuery(data: ArchiveHeader[]): string {
+	// todo: check for empty form
 	const selections = filterResults(data);
 	const query = Object.keys(selections).map(key => {
 		const values = selections[key];
@@ -53,30 +54,34 @@ export function buildQuery(data: ArchiveHeader[]): string {
 	}
 */
 function filterResults(results: ArchiveHeader[]): any {
-	const selections = {} as any;
-	
+	const selections: CategorySelection = {};
+
 	results.forEach(result => {
+		const codes = result.code.split('.');
 		if (result.categories) {
+			// pull child selections and sort into selections 
 			const selection = filterResults(result.categories);
 			Object.keys(selection).forEach(key => {
 				if (!selections[key]) selections[key] = [];
 				selections[key] = selections[key].concat(selection[key]);
 			});
+			if (selections[codes[0]] && result.categories.length === selections[codes[0]].length) {
+				selections[codes[0]] = ['*']
+			}
 		} else if (result.checked) {
-			const codes = result.code.split('.');
 			if (codes[1]) {
 				if (!selections[codes[0]]) selections[codes[0]] = [];
 				selections[codes[0]].push(codes[1]);
 			}
 		}
 	})
-	
+
 	return selections;
 }
 
 /** Convert query and data to API url */
 export function queryToUrl(query: string, date: Date) {
-	const maxResults = 5;
+	const maxResults = 100;
 	const base = '//export.arxiv.org/api/query';
 	const to: Date = previousArxivDay(date);
 	const from: Date = previousArxivDay(to);

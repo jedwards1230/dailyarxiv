@@ -40,9 +40,7 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
                 checked: checked
             }
         })
-        console.log('updateChildren', entry)
         update(index, entry);
-        console.log(watch(`${prefix}categories.${index}` as "categories"))
     }
 
     return (
