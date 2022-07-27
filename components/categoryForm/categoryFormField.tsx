@@ -1,6 +1,6 @@
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
 import { ListItemButton, Checkbox, ListItemText, Collapse, List, ListItem } from '@mui/material';
-import React, { FunctionComponent, useEffect, useState } from 'react';
+import React, { FunctionComponent, useState } from 'react';
 import { Controller } from 'react-hook-form';
 import useCategoryFormField from './useCategoryFormField';
 
@@ -12,6 +12,7 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
     const {
         fields,
         watch,
+        update,
         control,
         categoryArrayInputPath: categoryArrayInputPath,
     } = useCategoryFormField(prefix);
@@ -25,11 +26,23 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
     };
 
     const checkIndeterminate = (index: number) => {
-        // * watch() is tagged to return any[], but this returns a single object. need to ignore error and it works fine.
         // @ts-ignore: Unreachable code error
         const entry = watch(`${prefix}categories.${index}` as "categories") as ArchiveHeader;
-
         return (!entry.categories!.every((child) => child.checked) && !entry.categories!.every((child) => !child.checked))
+    }
+
+    const updateChildren = (index: number, checked: boolean) => {
+        // @ts-ignore: Unreachable code error
+        const entry = watch(`${prefix}categories.${index}` as "categories") as ArchiveHeader;
+        entry.categories = entry.categories!.map((child) => {
+            return {
+                ...child,
+                checked: checked
+            }
+        })
+        console.log('updateChildren', entry)
+        update(index, entry);
+        console.log(watch(`${prefix}categories.${index}` as "categories"))
     }
 
     return (
@@ -42,24 +55,22 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
                 const indeterminate = hasChildren ? checkIndeterminate(index) : false;
 
                 return (
-                    <div key={header.code}>
+                    <div key={header.id}>
                         <ListItemButton>
                             <Controller
                                 name={fieldId}
                                 control={control}
-                                render={({ field }) => {
-                                    const value = hasChildren
-                                        ? header.categories!.every((child: ArchiveHeader) => child.checked)
-                                        : field.value
-                                    return (
-                                        <Checkbox
-                                            edge="start"
-                                            onChange={(e) => field.onChange(e.target.checked)}
-                                            checked={field.value}
-                                            indeterminate={indeterminate}
-                                        />
-                                    )
-                                }}
+                                render={({ field }) => (
+                                    <Checkbox
+                                        edge="start"
+                                        onChange={(e) => {
+                                            if (hasChildren) updateChildren(index, e.target.checked)
+                                            return field.onChange(e.target.checked)
+                                        }}
+                                        checked={indeterminate || field.value}
+                                        indeterminate={indeterminate}
+                                    />
+                                )}
                             />
                             <ListItemText primary={header.desc} />
                             {hasChildren &&

@@ -14,7 +14,7 @@ function useCategoryFormField(prefix: string) {
 
     const categoryArrayInputPath = `${prefix}categories` as 'categories';
 
-    const { fields } = useFieldArray({
+    const { fields, update } = useFieldArray({
         control,
         name: categoryArrayInputPath,
     });
@@ -22,6 +22,7 @@ function useCategoryFormField(prefix: string) {
     return {
         fields,
         watch,
+        update,
         control,
         categoryArrayInputPath: categoryArrayInputPath,
     };

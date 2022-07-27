@@ -1,5 +1,6 @@
 import xml2js from 'xml2js'
 
+/** Attempt to pull and clean ArXiv results */
 export async function fetchArchive(url: string) {
 	const parser = new xml2js.Parser();
 
@@ -16,6 +17,7 @@ export async function fetchArchive(url: string) {
 	}
 }
 
+/** Clean data fetched from ArXiv */
 function cleanData(entry: any) {
 	const paper: ArchiveResult = {
 		author: entry.author,
@@ -33,12 +35,9 @@ function cleanData(entry: any) {
 	return paper
 }
 
+/** Build query based on category selections */
 export function buildQuery(data: ArchiveHeader[]): string {
 	const selections = filterResults(data);
-	// loop through selections and build query
-	// query has the format of:
-	// cat:${key}.${value[0]}+cat:${key}.${value[1]}+...+cat:${key}.${value[n]}
-	// join them with '+OR+' unless its the last item
 	const query = Object.keys(selections).map(key => {
 		const values = selections[key];
 		return values.map((value: string) => `cat:${key}.${value}`).join('+OR+');
@@ -46,9 +45,9 @@ export function buildQuery(data: ArchiveHeader[]): string {
 	return query
 }
 
-/* 
-	recursive function to find which section per code was selected 
-	returns object in the format of: {
+/** 
+	* Recursive function to find which section per code was selected 
+	* Returns object in the format of: {
 		'astro-ph': [GA, GP, ...],
 		'stat': [ST, ...],
 	}
@@ -75,16 +74,19 @@ function filterResults(results: ArchiveHeader[]): any {
 	return selections;
 }
 
+/** Convert query and data to API url */
 export function queryToUrl(query: string, date: Date) {
+	const maxResults = 5;
 	const base = '//export.arxiv.org/api/query';
 	const to: Date = previousArxivDay(date);
 	const from: Date = previousArxivDay(to);
 	return base + '?search_query=(' + query + ')+AND+lastUpdatedDate:['
 		+ dateToArxivDate(from, true) + '+TO+'
 		+ dateToArxivDate(to, false)
-		+ ']&max_results=5';
+		+ ']&max_results=' + maxResults;
 }
 
+/** Find previous day for API request */
 function previousArxivDay(date: Date) {
 	var delta = [
 		-3, // Sunday -> Thursday
@@ -100,6 +102,7 @@ function previousArxivDay(date: Date) {
 	return new_date;
 }
 
+/** Find next day for API request */
 function nextArxivDay(date: Date) {
 	var delta = [
 		+1, // Sunday -> Monday
@@ -115,6 +118,7 @@ function nextArxivDay(date: Date) {
 	return new_date;
 }
 
+/** Transform Data object for API request */
 function dateToArxivDate(date: Date, from: boolean): string {
 	var day = date.getDate();
 	var month = date.getMonth() + 1;
@@ -131,6 +135,8 @@ function dateToArxivDate(date: Date, from: boolean): string {
 	return text;
 }
 
+
+/** Default search categories */
 export const ArxivCategories: ArchiveHeader[] = [
 	{
 		desc: 'Computer Science',

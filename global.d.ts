@@ -1,4 +1,5 @@
 type ArchiveHeader = {
+	id?: string;
 	desc: string,
 	code: string,
 	checked: boolean,
