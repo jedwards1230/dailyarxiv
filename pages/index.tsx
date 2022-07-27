@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import CalendarComponent from '../components/calendar/calendar'
-import { fetchArchive, queryToUrl, ArxivCategories, buildQuery } from '../scripts/apiTools'
+import { fetchArchive, queryToUrl, buildQuery } from '../scripts/apiTools'
 import styles from '../styles/Home.module.css'
 import { FormProvider, useForm } from 'react-hook-form'
 import { Button } from '@mui/material'
@@ -9,6 +9,7 @@ import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { useAppContext } from './_app'
 import CategoryFormField from '../components/categoryForm/categoryFormField'
+import { ArxivCategories } from '../constants'
 
 type CategoryForm = {
 	categories: ArchiveHeader[]
@@ -24,8 +25,9 @@ const Home: NextPage = () => {
 	const onSubmit = async (data: CategoryForm) => {
 		const query = buildQuery(data.categories);
 		const url = queryToUrl(query, data.datepicker);
-		console.log(url);
 		const response = await fetchArchive(url);
+		appContext.query = query;
+		appContext.timePicked = data.datepicker;
 		appContext.results = response as ArchiveResult[];
 		await router.push('/results');
 	}

@@ -4,7 +4,7 @@ import styles from '../styles/Results.module.css'
 import Head from 'next/head'
 import { Card, CardActions, CardContent, Link as MUILink, Stack, Typography } from "@mui/material";
 import Link from 'next/link'
-import {useRouter} from "next/router";
+import { useRouter } from "next/router";
 
 
 const Results: NextPage = () => {
@@ -31,36 +31,34 @@ const Results: NextPage = () => {
                     </h1>
 
                     <p className={styles.description}>
-                        {appContext.results.length} Results
+                        {appContext.results.length} {appContext.results.length > 1 ? 'results' : 'result'} found
                     </p>
                 </div>
                 <Stack className={styles.results} spacing={2}>
                     {appContext.results.map((result: ArchiveResult, i: number) => {
                         return (
-                            <div key={result.id + i}>
-                                <Card>
-                                    <CardContent>
-                                        <Typography sx={{ mb: 1.5 }} variant="h5" component="div">
-                                            {result.title}
-                                        </Typography>
-                                        <Typography color="text.secondary">
-                                            {'Authors: ' + result.author.map((author, i: number) => {
-                                                return (i === result.author.length - 1) ? author.name : author.name + ' '
-                                            })}
-                                        </Typography>
-                                    </CardContent>
-                                    <CardActions>
-                                        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                                            {result.primaryCategory}
-                                        </Typography>
-                                        <MUILink
-                                            sx={{ ml: 'auto' }}
-                                            href={result.id}
-                                            target="_blank"
-                                            rel="noopener noreferrer">Open</MUILink>
-                                    </CardActions>
-                                </Card>
-                            </div>
+                            <Card key={result.id + i}>
+                                <CardContent>
+                                    <Typography sx={{ mb: 1.5 }} variant="h6" component="div">
+                                        {result.title}
+                                    </Typography>
+                                    <Typography color="text.secondary">
+                                        {'Authors: ' + result.author.map((author, i: number) => {
+                                            return (i === result.author.length - 1) ? author.name : author.name + ' '
+                                        })}
+                                    </Typography>
+                                </CardContent>
+                                <CardActions>
+                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                        {result.primaryCategory}
+                                    </Typography>
+                                    <MUILink
+                                        sx={{ ml: 'auto' }}
+                                        href={result.id}
+                                        target="_blank"
+                                        rel="noopener noreferrer">Open</MUILink>
+                                </CardActions>
+                            </Card>
                         )
                     })}
                 </Stack>
@@ -68,7 +66,7 @@ const Results: NextPage = () => {
 
             <footer className={styles.footer}>
                 <a
-                    href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+                    href="//jedwards.cc"
                     target="_blank"
                     rel="noopener noreferrer"
                 >

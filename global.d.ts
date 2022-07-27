@@ -10,7 +10,6 @@ type ArchiveResult = {
 	comment?: string,
 	primaryCategory?: string,
 	author: { name: string }[],
-	category: string[],
 	id: string,
 	link: string[],
 	published: string,

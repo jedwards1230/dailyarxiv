@@ -15,7 +15,9 @@ interface MyAppProps extends AppProps {
 }
 
 const AppContext = createContext({
-	results: new Array<ArchiveResult>()
+	results: new Array<ArchiveResult>(),
+	query: '',
+	timePicked: new Date(),
 });
 
 function MyApp(props: MyAppProps) {
