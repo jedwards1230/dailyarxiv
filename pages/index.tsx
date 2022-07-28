@@ -56,10 +56,9 @@ const Home: NextPage = () => {
 
 				<div className={styles.categoryTree}>
 					<CategoryFormField />
-
 					<Button
 						color="primary"
-						style={{ marginTop: '4rem' }}
+						style={{ marginTop: '3rem' }}
 						onClick={methods.handleSubmit(onSubmit)}
 						variant="solid">Search</Button>
 				</div>

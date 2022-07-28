@@ -31,7 +31,7 @@ const Results: NextPage = () => {
                         <SearchInfo results={appContext.results} />
                     </div>
                 </div>
-                <Stack className={styles.results} spacing={2}>
+                <Stack className={styles.results} spacing={3}>
                     {appContext.results.map((result: ArchiveResult, i: number) => {
                         return (
                             <a
