@@ -1,5 +1,4 @@
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import { Collapse } from '@mui/material';
 import Checkbox from '@mui/joy/Checkbox';
 import List from '@mui/joy/List';
 import ListItem from '@mui/joy/ListItem';
@@ -7,7 +6,6 @@ import React, { FunctionComponent, useState } from 'react';
 import { Controller } from 'react-hook-form';
 import useCategoryFormField from './useCategoryFormField';
 import ListItemButton from '@mui/joy/ListItemButton';
-import { Sheet } from '@mui/joy';
 
 interface Props {
     prefix?: string;
@@ -49,11 +47,7 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
     }
 
     return (
-        <List
-            sx={{
-                width: '100%',
-                bgcolor: 'background.paper',
-            }}>
+        <List sx={{ width: '100%' }}>
             {fields.map((header: ArchiveHeader, index) => {
                 const hasChildren = header.categories && header.categories.length > 0;
                 const fieldId = categoryArrayInputPath + `[${index}].checked` as 'checked';
@@ -69,12 +63,12 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
                                     <Checkbox
                                         color="primary"
                                         variant="soft"
+                                        checked={indeterminate || field.value}
+                                        indeterminate={indeterminate}
                                         onChange={(e) => {
                                             if (hasChildren) updateChildren(index, e.target.checked)
                                             return field.onChange(e.target.checked)
                                         }}
-                                        checked={indeterminate || field.value}
-                                        indeterminate={indeterminate}
                                     />
                                 )}
                             />
@@ -85,18 +79,10 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
                                 </div>
                             }
                         </ListItemButton>
-                        {hasChildren &&
-                            <Collapse in={open[index]} timeout="auto" unmountOnExit>
-                                <List
-                                    sx={{
-                                        bgcolor: 'background.paper',
-                                        "--List-padding": "0px",
-                                    }}>
-                                    <ListItem nested sx={{ pl: 4 }} >
-                                        <CategoryFormField prefix={`${prefix}categories.${index}.`} />
-                                    </ListItem>
-                                </List>
-                            </Collapse>
+                        {(hasChildren && open[index]) &&
+                            <ListItem nested sx={{ pl: 4 }} >
+                                <CategoryFormField prefix={`${prefix}categories.${index}.`} />
+                            </ListItem>
                         }
                     </div>
                 )

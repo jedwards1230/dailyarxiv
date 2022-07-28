@@ -3,13 +3,10 @@ import { useAppContext } from "./_app";
 import styles from '../styles/Results.module.css'
 import Head from 'next/head'
 import { Grid, Stack } from "@mui/material";
-import MUILink from '@mui/joy/Link';
 import Typography from '@mui/joy/Typography';
 import Link from 'next/link'
 import { useRouter } from "next/router";
-import { Sheet } from "@mui/joy";
 import { MathJax } from "better-react-mathjax";
-import { ReactElement } from "react";
 
 
 const Results: NextPage = () => {
@@ -36,11 +33,21 @@ const Results: NextPage = () => {
                     </h1>
 
                     <p className={styles.description}>
-                        showing {appContext.results.length} {appContext.results.length > 1 ? 'results' : 'result'}
+                        <SearchInfo results={appContext.results} />
                     </p>
                 </div>
                 <Stack className={styles.results} spacing={2}>
-                    {appContext.results.map((result: ArchiveResult, i: number) => <Result key={i} result={result} i={i} />)}
+                    {appContext.results.map((result: ArchiveResult, i: number) => {
+                        return (
+                            <a
+                                key={i}
+                                href={result.id}
+                                target="_blank"
+                                rel="noopener noreferrer">
+                                <Result result={result} i={i} />
+                            </a>
+                        )
+                    })}
                 </Stack>
             </main>
 
@@ -57,7 +64,15 @@ const Results: NextPage = () => {
     )
 }
 
-const Result = (props: { result: ArchiveResult, i: number}) => {
+const SearchInfo = (props: { results: ArchiveResult[] }) => {
+    return (
+        <div >
+            showing {props.results.length} {props.results.length > 1 ? 'results' : 'result'}
+        </div>
+    )
+}
+
+const Result = (props: { result: ArchiveResult, i: number }) => {
     return (
         <Grid
             key={props.result.id + props.i}
@@ -65,7 +80,7 @@ const Result = (props: { result: ArchiveResult, i: number}) => {
             direction='row'
             justifyContent="center"
             alignItems="center">
-            <Grid item xs={11}>
+            <Grid item xs={12}>
                 <Typography sx={{ fontSize: 20 }} level="h6">
                     <Title title={props.result.title} />
                 </Typography>
@@ -76,13 +91,6 @@ const Result = (props: { result: ArchiveResult, i: number}) => {
                     {props.result.primaryCategory}
                 </Typography>
             </Grid>
-            <Grid item xs={1}>
-                <MUILink
-                    sx={{ ml: 'auto' }}
-                    href={props.result.id}
-                    target="_blank"
-                    rel="noopener noreferrer">Open</MUILink>
-            </Grid>
         </Grid>
     )
 }
@@ -90,7 +98,7 @@ const Result = (props: { result: ArchiveResult, i: number}) => {
 const Title = (props: { title: string }) => {
     /** Scan through the title string to $[content]$ with <MathJax>[content]</MathJax>  */
     const buildTitle = (title: string): any => {
-        const res: ReactElement[] = [];
+        const res: JSX.Element[] = [];
         for (let i = 0; i < title.length; i++) {
             if (title[i] === '$') {
                 let j = i + 1;
