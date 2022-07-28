@@ -1,11 +1,12 @@
 import '../styles/globals.css'
 import "../styles/calendar.css";
 import type { AppProps } from 'next/app'
-import { CssBaseline, NoSsr } from '@mui/material';
+import { NoSsr } from '@mui/material';
 import { createContext, useContext } from 'react';
 import { MathJaxContext } from 'better-react-mathjax';
-import { CssVarsProvider, getInitColorSchemeScript, useColorScheme } from '@mui/joy/styles';
+import { CssVarsProvider } from '@mui/joy/styles';
 import theme from '../scripts/theme';
+import Layout from '../components/layout';
 
 
 const AppContext = createContext({
@@ -15,17 +16,16 @@ const AppContext = createContext({
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
-	//const { mode, setMode } = useColorScheme();
 	const sharedState = useContext(AppContext);
 
 	return (
 		<AppContext.Provider value={sharedState}>
-			<CssVarsProvider theme={theme}>
+			<CssVarsProvider defaultMode="system" theme={theme}>
 				<MathJaxContext>
-					{getInitColorSchemeScript()}
 					<NoSsr>
-						<CssBaseline />
-						<Component {...pageProps} />
+						<Layout>
+							<Component {...pageProps} />
+						</Layout>
 					</NoSsr>
 				</MathJaxContext>
 			</CssVarsProvider>

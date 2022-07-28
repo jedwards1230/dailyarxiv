@@ -1,7 +1,21 @@
 import { experimental_extendTheme as extendMuiTheme } from '@mui/material/styles';
-import { extendTheme as extendJoyTheme } from '@mui/joy/styles';
+import { extendTheme as extendJoyTheme, useColorScheme } from '@mui/joy/styles';
 import colors from '@mui/joy/colors';
 import { deepmerge } from '@mui/utils';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import { useEffect } from 'react';
+
+export const useThemeChecker = () => {
+    const { mode, setMode } = useColorScheme();
+	const isDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+
+	useEffect(() => {
+		setMode(isDarkMode ? 'dark' : 'light');
+	// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [isDarkMode]);
+
+    return [mode, setMode];
+}
 
 const muiTheme = extendMuiTheme({
     // This is required to point to `var(--joy-*)` because we are using `CssVarsProvider` from Joy UI.
