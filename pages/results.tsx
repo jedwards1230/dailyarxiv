@@ -32,43 +32,15 @@ const Results: NextPage = () => {
             <main className={styles.main}>
                 <div className={styles.welcome}>
                     <h1 className={styles.title}>
-                        Daily <Link href="/">arXiv</Link>
+                        daily <Link href="/">arXiv</Link>
                     </h1>
 
                     <p className={styles.description}>
-                        Showing {appContext.results.length} {appContext.results.length > 1 ? 'results' : 'result'}
+                        showing {appContext.results.length} {appContext.results.length > 1 ? 'results' : 'result'}
                     </p>
                 </div>
                 <Stack className={styles.results} spacing={2}>
-                    {appContext.results.map((result: ArchiveResult, i: number) => {
-                        return (
-                            <Grid
-                                container
-                                direction='row'
-                                justifyContent="center"
-                                alignItems="center"
-                                key={result.id + i}>
-                                <Grid item xs={11}>
-                                    <Typography level="h6" component="div">
-                                        <Title title={result.title} />
-                                    </Typography>
-                                    <Typography sx={{ mb: 1 }} color="neutral">
-                                        {result.author.map((author, i: number) => (i === result.author.length - 1) ? author : author + ', ')}
-                                    </Typography>
-                                    <Typography sx={{ fontSize: 14 }} color="primary" gutterBottom>
-                                        {result.primaryCategory}
-                                    </Typography>
-                                </Grid>
-                                <Grid item xs={1}>
-                                    <MUILink
-                                        sx={{ ml: 'auto' }}
-                                        href={result.id}
-                                        target="_blank"
-                                        rel="noopener noreferrer">Open</MUILink>
-                                </Grid>
-                            </Grid>
-                        )
-                    })}
+                    {appContext.results.map((result: ArchiveResult, i: number) => <Result key={i} result={result} i={i} />)}
                 </Stack>
             </main>
 
@@ -82,6 +54,36 @@ const Results: NextPage = () => {
                 </a>
             </footer>
         </div>
+    )
+}
+
+const Result = (props: { result: ArchiveResult, i: number}) => {
+    return (
+        <Grid
+            key={props.result.id + props.i}
+            container
+            direction='row'
+            justifyContent="center"
+            alignItems="center">
+            <Grid item xs={11}>
+                <Typography level="h6" component="div">
+                    <Title title={props.result.title} />
+                </Typography>
+                <Typography sx={{ mb: 1, width: "90%" }} color="neutral">
+                    {props.result.author.map((author, i: number) => (i === props.result.author.length - 1) ? author : author + ', ')}
+                </Typography>
+                <Typography sx={{ fontSize: 14 }} color="primary" gutterBottom>
+                    {props.result.primaryCategory}
+                </Typography>
+            </Grid>
+            <Grid item xs={1}>
+                <MUILink
+                    sx={{ ml: 'auto' }}
+                    href={props.result.id}
+                    target="_blank"
+                    rel="noopener noreferrer">Open</MUILink>
+            </Grid>
+        </Grid>
     )
 }
 
