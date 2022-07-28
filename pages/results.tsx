@@ -66,10 +66,10 @@ const Result = (props: { result: ArchiveResult, i: number}) => {
             justifyContent="center"
             alignItems="center">
             <Grid item xs={11}>
-                <Typography level="h6" component="div">
+                <Typography sx={{ fontSize: 20 }} level="h6">
                     <Title title={props.result.title} />
                 </Typography>
-                <Typography sx={{ mb: 1, width: "90%" }} color="neutral">
+                <Typography sx={{ mb: 1, width: "90%", fontSize: 15 }} color="neutral">
                     {props.result.author.map((author, i: number) => (i === props.result.author.length - 1) ? author : author + ', ')}
                 </Typography>
                 <Typography sx={{ fontSize: 14 }} color="primary" gutterBottom>
@@ -90,12 +90,12 @@ const Result = (props: { result: ArchiveResult, i: number}) => {
 const Title = (props: { title: string }) => {
     /** Scan through the title string to $[content]$ with <MathJax>[content]</MathJax>  */
     const buildTitle = (title: string): any => {
-        let res: ReactElement[] = [];
+        const res: ReactElement[] = [];
         for (let i = 0; i < title.length; i++) {
             if (title[i] === '$') {
                 let j = i + 1;
                 while (title[j] !== '$') j++;
-                res.push(<MathJax inline={true} >{title.substring(i + 1, j)}</MathJax>);
+                res.push(<Typography sx={{ fontStyle: 'strong' }}><MathJax inline={true} >{title.substring(i + 1, j)}</MathJax></Typography>);
                 i = j;
             } else {
                 res.push(<span>{title[i]}</span>);

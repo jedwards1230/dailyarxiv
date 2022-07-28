@@ -70,8 +70,6 @@ const muiTheme = extendMuiTheme({
 
 const joyTheme = extendJoyTheme();
 
-// You can use your own `deepmerge` function.
-// joyTheme will deeply merge to muiTheme.
 const theme = deepmerge(muiTheme, joyTheme);
 
 export default theme;

@@ -60,7 +60,7 @@ const Home: NextPage = () => {
 						</h1>
 
 						<p className={styles.description}>
-							Get started by choosing a date below.
+							get started by choosing a date below
 						</p>
 
 						{/* <CalendarComponent /> */}
