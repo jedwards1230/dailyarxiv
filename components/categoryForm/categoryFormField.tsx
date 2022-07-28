@@ -1,8 +1,13 @@
 import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import { ListItemButton, Checkbox, ListItemText, Collapse, List, ListItem } from '@mui/material';
+import { Collapse } from '@mui/material';
+import Checkbox from '@mui/joy/Checkbox';
+import List from '@mui/joy/List';
+import ListItem from '@mui/joy/ListItem';
 import React, { FunctionComponent, useState } from 'react';
 import { Controller } from 'react-hook-form';
 import useCategoryFormField from './useCategoryFormField';
+import ListItemButton from '@mui/joy/ListItemButton';
+import { Sheet } from '@mui/joy';
 
 interface Props {
     prefix?: string;
@@ -45,8 +50,10 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
 
     return (
         <List
-            disablePadding
-            sx={{ width: '100%', bgcolor: 'background.paper' }}>
+            sx={{
+                width: '100%',
+                bgcolor: 'background.paper',
+            }}>
             {fields.map((header: ArchiveHeader, index) => {
                 const hasChildren = header.categories && header.categories.length > 0;
                 const fieldId = categoryArrayInputPath + `[${index}].checked` as 'checked';
@@ -60,7 +67,8 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
                                 control={control}
                                 render={({ field }) => (
                                     <Checkbox
-                                        edge="start"
+                                        color="primary"
+                                        variant="soft"
                                         onChange={(e) => {
                                             if (hasChildren) updateChildren(index, e.target.checked)
                                             return field.onChange(e.target.checked)
@@ -70,7 +78,7 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
                                     />
                                 )}
                             />
-                            <ListItemText primary={header.desc} />
+                            <ListItem sx={{ width: "100%" }}>{header.desc}</ListItem>
                             {hasChildren &&
                                 <div onClick={() => handleClick(index)}>
                                     {open[index] ? <ExpandLess /> : <ExpandMore />}
@@ -80,9 +88,11 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
                         {hasChildren &&
                             <Collapse in={open[index]} timeout="auto" unmountOnExit>
                                 <List
-                                    disablePadding
-                                    sx={{ width: '100%', bgcolor: 'background.paper' }}>
-                                    <ListItem sx={{ pl: 4 }}>
+                                    sx={{
+                                        bgcolor: 'background.paper',
+                                        "--List-padding": "0px",
+                                    }}>
+                                    <ListItem nested sx={{ pl: 4 }} >
                                         <CategoryFormField prefix={`${prefix}categories.${index}.`} />
                                     </ListItem>
                                 </List>

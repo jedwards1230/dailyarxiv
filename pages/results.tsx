@@ -2,9 +2,14 @@ import { NextPage } from "next/types";
 import { useAppContext } from "./_app";
 import styles from '../styles/Results.module.css'
 import Head from 'next/head'
-import { Card, CardActions, CardContent, Link as MUILink, Stack, Typography } from "@mui/material";
+import { Grid, Stack } from "@mui/material";
+import MUILink from '@mui/joy/Link';
+import Typography from '@mui/joy/Typography';
 import Link from 'next/link'
 import { useRouter } from "next/router";
+import { Sheet } from "@mui/joy";
+import { MathJax } from "better-react-mathjax";
+import { ReactElement } from "react";
 
 
 const Results: NextPage = () => {
@@ -31,34 +36,37 @@ const Results: NextPage = () => {
                     </h1>
 
                     <p className={styles.description}>
-                        {appContext.results.length} {appContext.results.length > 1 ? 'results' : 'result'} found
+                        Showing {appContext.results.length} {appContext.results.length > 1 ? 'results' : 'result'}
                     </p>
                 </div>
                 <Stack className={styles.results} spacing={2}>
                     {appContext.results.map((result: ArchiveResult, i: number) => {
                         return (
-                            <Card key={result.id + i}>
-                                <CardContent>
-                                    <Typography sx={{ mb: 1.5 }} variant="h6" component="div">
-                                        {result.title}
+                            <Grid
+                                container
+                                direction='row'
+                                justifyContent="center"
+                                alignItems="center"
+                                key={result.id + i}>
+                                <Grid item xs={11}>
+                                    <Typography level="h6" component="div">
+                                        <Title title={result.title} />
                                     </Typography>
-                                    <Typography color="text.secondary">
-                                        {'Authors: ' + result.author.map((author, i: number) => {
-                                            return (i === result.author.length - 1) ? author.name : author.name + ' '
-                                        })}
+                                    <Typography sx={{ mb: 1 }} color="neutral">
+                                        {result.author.map((author, i: number) => (i === result.author.length - 1) ? author : author + ', ')}
                                     </Typography>
-                                </CardContent>
-                                <CardActions>
-                                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                                    <Typography sx={{ fontSize: 14 }} color="primary" gutterBottom>
                                         {result.primaryCategory}
                                     </Typography>
+                                </Grid>
+                                <Grid item xs={1}>
                                     <MUILink
                                         sx={{ ml: 'auto' }}
                                         href={result.id}
                                         target="_blank"
                                         rel="noopener noreferrer">Open</MUILink>
-                                </CardActions>
-                            </Card>
+                                </Grid>
+                            </Grid>
                         )
                     })}
                 </Stack>
@@ -73,6 +81,35 @@ const Results: NextPage = () => {
                     by Justin Edwards
                 </a>
             </footer>
+        </div>
+    )
+}
+
+const Title = (props: { title: string }) => {
+    /** Scan through the title string to $[content]$ with <MathJax>[content]</MathJax>  */
+    const buildTitle = (title: string): any => {
+        let res: ReactElement[] = [];
+        for (let i = 0; i < title.length; i++) {
+            if (title[i] === '$') {
+                let j = i + 1;
+                while (title[j] !== '$') j++;
+                res.push(<MathJax inline={true} >{title.substring(i + 1, j)}</MathJax>);
+                i = j;
+            } else {
+                res.push(<span>{title[i]}</span>);
+            }
+        }
+        // return every item in res as one 
+        return res.map((item, index) => {
+            return <>{item}</>;
+        }).reduce((prev, curr) => {
+            return <>{prev}{curr}</>;
+        }).props.children;
+    }
+
+    return (
+        <div onClick={() => console.log(props.title)}>
+            {buildTitle(props.title)}
         </div>
     )
 }

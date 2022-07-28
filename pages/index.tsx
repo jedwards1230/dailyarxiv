@@ -1,15 +1,18 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import CalendarComponent from '../components/calendar/calendar'
 import { fetchArchive, queryToUrl, buildQuery } from '../scripts/apiTools'
 import styles from '../styles/Home.module.css'
-import { FormProvider, useForm } from 'react-hook-form'
-import { Button } from '@mui/material'
+import { Controller, FormProvider, useForm, useFormContext } from 'react-hook-form'
+import TextField from '@mui/joy/TextField';import Button from '@mui/joy/Button';
 import { useRouter } from 'next/router'
 import Link from 'next/link'
 import { useAppContext } from './_app'
 import CategoryFormField from '../components/categoryForm/categoryFormField'
 import { ArxivCategories } from '../constants'
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider, StaticDatePicker } from '@mui/x-date-pickers'
+import { useColorScheme } from '@mui/joy/styles'
+import { useMediaQuery } from '@mui/material'
 
 type CategoryForm = {
 	categories: ArchiveHeader[]
@@ -17,8 +20,17 @@ type CategoryForm = {
 }
 
 const Home: NextPage = () => {
+	const { mode, setMode } = useColorScheme();
+	// usemediaquery for dark mode
+	const isDarkMode = useMediaQuery('(prefers-color-scheme: dark)');
+	setMode(isDarkMode ? 'dark' : 'light');
+
+
 	const router = useRouter();
-	const defaultValues = { categories: ArxivCategories }
+	const defaultValues = {
+		categories: ArxivCategories,
+		datepicker: new Date()
+	}
 	const methods = useForm<CategoryForm>({ defaultValues })
 	const appContext = useAppContext();
 
@@ -51,21 +63,49 @@ const Home: NextPage = () => {
 							Get started by choosing a date below.
 						</p>
 
-						<CalendarComponent />
+						{/* <CalendarComponent /> */}
+						<StaticDatePickerDemo />
 					</div>
 
 					<div className={styles.categoryTree}>
 						<CategoryFormField />
 
 						<Button
+							color="primary"
 							style={{ marginTop: '4rem' }}
 							onClick={methods.handleSubmit(onSubmit)}
-							variant="contained">Search</Button>
+							variant="solid">Search</Button>
 					</div>
 				</FormProvider>
 			</div>
 		</div>
 	)
+}
+
+function StaticDatePickerDemo() {
+	const { control } = useFormContext();
+
+	return (
+		<LocalizationProvider dateAdapter={AdapterDateFns}>
+			<Controller
+				name={'datepicker'}
+				control={control}
+				render={({ field }) => (
+					<StaticDatePicker
+						disableFuture
+						displayStaticWrapperAs="desktop"
+						openTo="day"
+						value={field.value}
+						onChange={(newValue: any) => {
+							field.onChange(newValue);
+						}}
+						renderInput={(params: any) => <TextField {...params} />}
+					/>
+				)}
+			/>
+
+		</LocalizationProvider>
+	);
 }
 
 export default Home

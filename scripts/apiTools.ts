@@ -1,3 +1,4 @@
+import { MathJax } from 'better-react-mathjax';
 import xml2js from 'xml2js'
 import { ArxivCategories } from '../constants'
 
@@ -20,7 +21,7 @@ export async function fetchArchive(url: string) {
 /** Clean data fetched from ArXiv */
 function cleanData(entry: any) {
 	const paper: ArchiveResult = {
-		author: entry.author,
+		author: entry.author.map((a: any) => a.name[0]),
 		id: entry.id[0],
 		link: entry.link,
 		published: entry.published[0],

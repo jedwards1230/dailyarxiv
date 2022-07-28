@@ -9,7 +9,7 @@ type ArchiveHeader = {
 type ArchiveResult = {
 	comment?: string,
 	primaryCategory?: string,
-	author: { name: string }[],
+	author: string[],
 	id: string,
 	link: string[],
 	published: string,
