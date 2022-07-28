@@ -97,8 +97,7 @@ function filterResults(results: ArchiveHeader[]): CategorySelection {
 }
 
 /** Convert query and data to API url */
-export function queryToUrl(query: string, date: Date) {
-	const maxResults = 50;
+export function queryToUrl(query: string, date: Date, maxResults = 100) {
 	const base = '//export.arxiv.org/api/query';
 	const to: Date = previousArxivDay(date);
 	const from: Date = previousArxivDay(to);

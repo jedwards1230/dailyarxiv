@@ -5,14 +5,13 @@ import { Controller, FormProvider, useForm, useFormContext } from 'react-hook-fo
 import TextField from '@mui/joy/TextField';
 import Button from '@mui/joy/Button';
 import { useRouter } from 'next/router'
-import NextLink from 'next/link'
 import { useAppContext } from './_app'
 import CategoryFormField from '../components/categoryForm/categoryFormField'
 import { ArxivCategories } from '../constants'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider, StaticDatePicker } from '@mui/x-date-pickers'
 import { useThemeChecker } from '../scripts/theme'
-import { Link, Typography } from '@mui/joy';
+import Title from '../components/title/title';
 
 type CategoryForm = {
 	categories: ArchiveHeader[]
@@ -43,23 +42,7 @@ const Home: NextPage = () => {
 		<div className={styles.container}>
 			<FormProvider {...methods}>
 				<div className={styles.welcome}>
-				<p className={styles.title}>
-                        <Typography sx={{
-                            fontSize: '4rem',
-                            display: 'inline'
-                        }}>Daily</Typography>
-                        <Typography sx={{
-                            fontSize: '4rem',
-                            display: 'inline'
-                        }}><NextLink href="/" passHref>
-                                <Link sx={{
-                                    textDecoration: 'none',
-                                }}>
-                                    arXiv
-                                </Link>
-                            </NextLink>
-                        </Typography>
-                    </p>
+					<Title />
 
 					<p className={styles.description}>
 						Get started by choosing a date below

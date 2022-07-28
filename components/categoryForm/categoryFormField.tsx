@@ -6,6 +6,9 @@ import React, { FunctionComponent, useState } from 'react';
 import { Controller } from 'react-hook-form';
 import useCategoryFormField from './useCategoryFormField';
 import ListItemButton from '@mui/joy/ListItemButton';
+import IconButton from '@mui/joy/IconButton';
+import { Typography } from '@mui/joy';
+
 
 interface Props {
     prefix?: string;
@@ -55,30 +58,44 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
 
                 return (
                     <div key={header.id}>
-                        <ListItemButton>
-                            <Controller
-                                name={fieldId}
-                                control={control}
-                                render={({ field }) => (
-                                    <Checkbox
-                                        color="primary"
-                                        variant="soft"
-                                        checked={indeterminate || field.value}
-                                        indeterminate={indeterminate}
-                                        onChange={(e) => {
-                                            if (hasChildren) updateChildren(index, e.target.checked)
-                                            return field.onChange(e.target.checked)
-                                        }}
-                                    />
-                                )}
-                            />
-                            <ListItem sx={{ width: "100%" }}>{header.desc}</ListItem>
-                            {hasChildren &&
+                        <ListItem
+                            sx={{ width: "100%" }}
+                            startAction={
+                                <Controller
+                                    name={fieldId}
+                                    control={control}
+                                    render={({ field }) => (
+                                        <Checkbox
+                                            color="primary"
+                                            variant="soft"
+                                            checked={indeterminate || field.value}
+                                            indeterminate={indeterminate}
+                                            onChange={(e) => {
+                                                if (hasChildren) updateChildren(index, e.target.checked)
+                                                return field.onChange(e.target.checked)
+                                            }}
+                                        />
+                                    )}
+                                />
+                            }
+                            endAction={hasChildren &&
                                 <div onClick={() => handleClick(index)}>
-                                    {open[index] ? <ExpandLess /> : <ExpandMore />}
+                                    {open[index]
+                                        ? <IconButton
+                                            variant="plain">
+                                            <ExpandLess />
+                                        </IconButton>
+                                        : <IconButton
+                                            variant="plain">
+                                            <ExpandMore />
+                                        </IconButton>
+                                    }
                                 </div>
                             }
-                        </ListItemButton>
+                        >
+                            <Typography sx={{ pl: 4 }}>{header.desc}</Typography>
+
+                        </ListItem>
                         {(hasChildren && open[index]) &&
                             <ListItem nested sx={{ pl: 4 }} >
                                 <CategoryFormField prefix={`${prefix}categories.${index}.`} />
