@@ -56,7 +56,7 @@ const Home: NextPage = () => {
 				<FormProvider {...methods}>
 					<div className={styles.welcome}>
 						<h1 className={styles.title}>
-							Daily  <Link href="/">arXiv</Link>
+							daily  <Link href="/">arXiv</Link>
 						</h1>
 
 						<p className={styles.description}>

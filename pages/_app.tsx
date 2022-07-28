@@ -22,8 +22,8 @@ function MyApp({ Component, pageProps }: AppProps) {
 		<AppContext.Provider value={sharedState}>
 			<CssVarsProvider theme={theme}>
 				<MathJaxContext>
+					{getInitColorSchemeScript()}
 					<NoSsr>
-						{getInitColorSchemeScript()}
 						<CssBaseline />
 						<Component {...pageProps} />
 					</NoSsr>
