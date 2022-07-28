@@ -76,23 +76,16 @@ const SearchInfo = (props: {
     }
 
     return (
-        <Typography
-            component={'span'}
-            sx={{
-                display: 'inline-flex',
-                alignItems: 'center',
-            }}>
+        <>
             Showing  <TextField
                 variant="plain"
                 value={resultsShown}
                 onChange={changeMaxResults}
                 sx={{
                     width: ((resultsShown.toString().length + 3) * 9) + 'px',
-                    fontSize: '1.5rem',
-                    mx: 1,
-                    p: 0
+                    mx: 1
                 }} />  {props.results.length > 1 ? 'results' : 'result'}
-        </Typography>
+        </>
     )
 }
 
