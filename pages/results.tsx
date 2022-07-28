@@ -3,14 +3,15 @@ import { useAppContext } from "./_app";
 import styles from '../styles/Results.module.css'
 import { Grid, Stack } from "@mui/material";
 import Typography from '@mui/joy/Typography';
-import Link from 'next/link'
+import NextLink from 'next/link'
 import { useRouter } from "next/router";
 import { MathJax } from "better-react-mathjax";
 import { useThemeChecker } from "../scripts/theme";
+import { Container, Link } from "@mui/joy";
 
 
 const Results: NextPage = () => {
-	const [mode, setMode] = useThemeChecker();
+    const [mode, setMode] = useThemeChecker();
     const router = useRouter();
     const appContext = useAppContext();
 
@@ -23,24 +24,39 @@ const Results: NextPage = () => {
         <div className={styles.container}>
             <main className={styles.main}>
                 <div className={styles.welcome}>
-                    <h1 className={styles.title}>
-                        daily <Link href="/">arXiv</Link>
-                    </h1>
+                    <p className={styles.title}>
+                        <Typography sx={{
+                            fontSize: '4rem',
+                            display: 'inline'
+                        }}>Daily</Typography>
+                        <Typography sx={{
+                            fontSize: '4rem',
+                            display: 'inline'
+                        }}><NextLink href="/" passHref>
+                                <Link sx={{
+                                    textDecoration: 'none',
+                                }}>
+                                    arXiv
+                                </Link>
+                            </NextLink>
+                        </Typography>
+                    </p>
 
                     <div className={styles.description}>
                         <SearchInfo results={appContext.results} />
                     </div>
                 </div>
-                <Stack className={styles.results} spacing={3}>
+                <Stack className={styles.results} spacing={1}>
                     {appContext.results.map((result: ArchiveResult, i: number) => {
                         return (
-                            <a
+                            <Link
                                 key={i}
+                                underline="none"
                                 href={result.id}
                                 target="_blank"
                                 rel="noopener noreferrer">
                                 <Result result={result} i={i} />
-                            </a>
+                            </Link>
                         )
                     })}
                 </Stack>
@@ -62,31 +78,31 @@ const Results: NextPage = () => {
 const SearchInfo = (props: { results: ArchiveResult[] }) => {
     return (
         <p >
-            showing {props.results.length} {props.results.length > 1 ? 'results' : 'result'}
+            Showing {props.results.length} {props.results.length > 1 ? 'results' : 'result'}
         </p>
     )
 }
 
 const Result = (props: { result: ArchiveResult, i: number }) => {
     return (
-        <Grid
-            key={props.result.id + props.i}
-            container
-            direction='row'
-            justifyContent="center"
-            alignItems="center">
-            <Grid item xs={12}>
-                <Typography sx={{ fontSize: 20 }} level="h6">
-                    <Title title={props.result.title} />
-                </Typography>
-                <Typography sx={{ mb: 1, width: "90%", fontSize: 15 }} color="neutral">
-                    {props.result.author.map((author, i: number) => (i === props.result.author.length - 1) ? author : author + ', ')}
-                </Typography>
-                <Typography sx={{ fontSize: 14 }} color="primary" gutterBottom>
-                    {props.result.primaryCategory}
-                </Typography>
-            </Grid>
-        </Grid>
+        <Container
+            sx={{
+                py: 1,
+                borderRadius: '0.5rem',
+                '&:hover, &:focus-within': {
+                    bgcolor: 'background.level1',
+                },
+            }}>
+            <Typography sx={{ fontSize: 20 }} level="h6">
+                <Title title={props.result.title} />
+            </Typography>
+            <Typography sx={{ mb: 1, width: "90%", fontSize: 15 }} textColor="text.secondary">
+                {props.result.author.map((author, i: number) => (i === props.result.author.length - 1) ? author : author + ', ')}
+            </Typography>
+            <Typography sx={{ fontSize: 14 }} color="primary" gutterBottom>
+                {props.result.primaryCategory}
+            </Typography>
+        </Container>
     )
 }
 

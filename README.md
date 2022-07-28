@@ -10,6 +10,5 @@ Thank you to arXiv for use of its [open access interoperability](https://arxiv.o
   * physics uses additional subcategories with different codes
 * change up colors all around
 * add search result info (categories, editable result count, etc)
-* hover effect for results (overlay? box shadow?)
 * optional date range instead of just one day
 * add to result entry (pdf link, summary, etc)

@@ -5,13 +5,14 @@ import { Controller, FormProvider, useForm, useFormContext } from 'react-hook-fo
 import TextField from '@mui/joy/TextField';
 import Button from '@mui/joy/Button';
 import { useRouter } from 'next/router'
-import Link from 'next/link'
+import NextLink from 'next/link'
 import { useAppContext } from './_app'
 import CategoryFormField from '../components/categoryForm/categoryFormField'
 import { ArxivCategories } from '../constants'
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider, StaticDatePicker } from '@mui/x-date-pickers'
 import { useThemeChecker } from '../scripts/theme'
+import { Link, Typography } from '@mui/joy';
 
 type CategoryForm = {
 	categories: ArchiveHeader[]
@@ -42,12 +43,26 @@ const Home: NextPage = () => {
 		<div className={styles.container}>
 			<FormProvider {...methods}>
 				<div className={styles.welcome}>
-					<h1 className={styles.title}>
-						daily  <Link href="/">arXiv</Link>
-					</h1>
+				<p className={styles.title}>
+                        <Typography sx={{
+                            fontSize: '4rem',
+                            display: 'inline'
+                        }}>Daily</Typography>
+                        <Typography sx={{
+                            fontSize: '4rem',
+                            display: 'inline'
+                        }}><NextLink href="/" passHref>
+                                <Link sx={{
+                                    textDecoration: 'none',
+                                }}>
+                                    arXiv
+                                </Link>
+                            </NextLink>
+                        </Typography>
+                    </p>
 
 					<p className={styles.description}>
-						get started by choosing a date below
+						Get started by choosing a date below
 					</p>
 
 					{/* <CalendarComponent /> */}
