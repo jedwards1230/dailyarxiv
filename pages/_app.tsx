@@ -8,11 +8,29 @@ import { CssVarsProvider } from '@mui/joy/styles';
 import theme from '../scripts/theme';
 import Layout from '../components/layout';
 
+// store categories, date in localstorage
+const saveConfig  = (categories: ArchiveHeader[], datepicker: Date) => {
+	const config: CategoryForm = {
+		categories,
+		datepicker
+	}
+	localStorage.setItem('config', JSON.stringify(config));
+}
+
+const loadConfig = (): CategoryForm | null => {
+	const config = localStorage.getItem('config');
+	if (config) {
+		return JSON.parse(config);
+	}
+	return null;
+}
 
 const AppContext = createContext({
 	results: new Array<ArchiveResult>(),
 	query: '',
 	timePicked: new Date(),
+	saveConfig,
+	loadConfig,
 });
 
 function MyApp({ Component, pageProps }: AppProps) {

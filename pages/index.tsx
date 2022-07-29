@@ -13,25 +13,28 @@ import { LocalizationProvider, StaticDatePicker } from '@mui/x-date-pickers'
 import { useThemeChecker } from '../scripts/theme'
 import Title from '../components/title/title';
 
-type CategoryForm = {
-	categories: ArchiveHeader[]
-	datepicker: Date
-}
-
 const Home: NextPage = () => {
+	const appContext = useAppContext();
 	const [mode, setMode] = useThemeChecker();
 	const router = useRouter();
-	const defaultValues = {
-		categories: ArxivCategories,
-		datepicker: new Date()
-	}
+
+	const storedConfig = appContext.loadConfig();
+	const defaultValues: CategoryForm = storedConfig
+		? storedConfig
+		: {
+			categories: ArxivCategories,
+			datepicker: new Date()
+		}
 	const methods = useForm<CategoryForm>({ defaultValues })
-	const appContext = useAppContext();
 
 	const onSubmit = async (data: CategoryForm) => {
+		// process form data
+		appContext.saveConfig(data.categories, data.datepicker);
 		const query = buildQuery(data.categories);
 		const url = queryToUrl(query, data.datepicker);
 		const response = await fetchArchive(url);
+
+		// handle api response
 		appContext.query = query;
 		appContext.timePicked = data.datepicker;
 		appContext.results = response as ArchiveResult[];

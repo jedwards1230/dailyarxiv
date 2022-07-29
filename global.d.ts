@@ -21,3 +21,8 @@ type ArchiveResult = {
 type CategorySelection = {
 	[key: string]: string[]
 }
+
+type CategoryForm = {
+	categories: ArchiveHeader[]
+	datepicker: Date
+}
