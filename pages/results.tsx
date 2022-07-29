@@ -113,8 +113,8 @@ const Result = (props: { result: ArchiveResult, i: number }) => {
                     <Typography sx={{ mb: 1, width: "90%", fontSize: 15 }} textColor="text.secondary">
                         {props.result.author.map((author, i: number) => (i === props.result.author.length - 1) ? author : author + ', ')}
                     </Typography>
-                    <Typography sx={{ fontSize: 14 }} color="primary" gutterBottom>
-                        {props.result.primaryCategory}
+                    <Typography sx={{ fontSize: 13 }} color="primary" gutterBottom>
+                        {props.result.codes?.join(' > ')}
                     </Typography>
                 </Grid>
                 <Grid xs={1}>

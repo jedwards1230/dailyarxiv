@@ -32,7 +32,15 @@ function cleanData(entry: any) {
 
 	if (entry["arxiv:comment"]) paper.comment = entry["arxiv:comment"][0];
 	if (entry["arxiv:primary_category"]) {
-		paper.primaryCategory = checkCategory(ArxivCategories, entry["arxiv:primary_category"][0].$.term);
+		const codes = entry["arxiv:primary_category"][0].$.term.split('.')
+		if (codes.length > 1) {
+			const parent = checkCategory(ArxivCategories, codes[0]);
+			const child = checkCategory(ArxivCategories, entry["arxiv:primary_category"][0].$.term);
+			paper.codes = [parent, child];
+		} else {
+			const code = checkCategory(ArxivCategories, entry["arxiv:primary_category"][0].$.term);
+			paper.codes = [code];
+		}
 	}
 	return paper
 }
