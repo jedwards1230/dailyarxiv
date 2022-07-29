@@ -18,9 +18,11 @@ const saveConfig  = (categories: ArchiveHeader[], datepicker: Date) => {
 }
 
 const loadConfig = (): CategoryForm | null => {
-	const config = localStorage.getItem('config');
-	if (config) {
-		return JSON.parse(config);
+	const stored = localStorage.getItem('config');
+	if (stored) {
+		const config = JSON.parse(stored);
+		config.datepicker = new Date(config.datepicker);
+		return config
 	}
 	return null;
 }
