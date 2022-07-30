@@ -19,9 +19,9 @@ const ResultCard = (props: { result: ArchiveResult, i: number }) => {
             sx={{
                 py: 1.25,
                 borderRadius: '0.5rem',
-                backgroundColor: (mode === 'dark') ? grey[900] : grey[50],
+                backgroundColor: (mode === 'dark') ? grey[900] : 'background.paper',
                 '&:hover, &:focus': {
-                    backgroundColor: (mode === 'dark') ? grey[800] : grey[100],
+                    backgroundColor: (mode === 'dark') ? grey[800] : grey[50],
                 },
             }}>
             <Link
