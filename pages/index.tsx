@@ -1,24 +1,23 @@
 import type { NextPage } from 'next'
 import { fetchArchive, queryToUrl, buildQuery } from '../scripts/apiTools'
-import styles from '../styles/Home.module.css'
-import { Controller, FormProvider, useForm, useFormContext } from 'react-hook-form'
-import TextField from '@mui/joy/TextField';
+import { FormProvider, useForm } from 'react-hook-form'
 import Button from '@mui/joy/Button';
 import { useRouter } from 'next/router'
 import { useAppContext } from './_app'
 import CategoryFormField from '../components/categoryForm/categoryFormField'
 import { ArxivCategories } from '../constants'
-import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
-import { LocalizationProvider, StaticDatePicker } from '@mui/x-date-pickers'
 import { useThemeChecker } from '../scripts/theme'
 import Title from '../components/title/title';
 import { Box } from '@mui/joy';
 import Section from '../components/section';
+import CalendarComponent from '../components/calendar/calendar';
 
 const Home: NextPage = () => {
 	const appContext = useAppContext();
 	const [mode, setMode] = useThemeChecker();
 	const router = useRouter();
+
+	//appContext.deleteConfig();
 
 	const storedConfig = appContext.loadConfig();
 	const defaultValues: CategoryForm = storedConfig
@@ -48,14 +47,8 @@ const Home: NextPage = () => {
 			<FormProvider {...methods}>
 				<Section>
 					<Title />
-
-					<p className={styles.description}>
-						Get started by choosing a date below
-					</p>
-
-					<StaticDatePickerDemo />
+					<CalendarComponent />
 				</Section>
-
 				<Section>
 					<Box
 						sx={{
@@ -75,35 +68,6 @@ const Home: NextPage = () => {
 			</FormProvider>
 		</>
 	)
-}
-
-function StaticDatePickerDemo() {
-	const { control } = useFormContext();
-
-	return (
-		<Box
-			sx={{
-				mx: 0,
-				padding: 1,
-			}}>
-			<LocalizationProvider dateAdapter={AdapterDateFns}>
-				<Controller
-					name={'datepicker'}
-					control={control}
-					render={({ field }) => (
-						<StaticDatePicker
-							disableFuture
-							displayStaticWrapperAs="desktop"
-							openTo="day"
-							value={field.value}
-							onChange={(newValue: any) => field.onChange(newValue)}
-							renderInput={(params: any) => <TextField {...params} />}
-						/>
-					)}
-				/>
-			</LocalizationProvider>
-		</Box>
-	);
 }
 
 export default Home

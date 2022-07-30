@@ -230,7 +230,7 @@ export const ArxivCategories: ArchiveHeader[] = [
 		]
 	},
 	{
-		desc: 'Electrical Engineering and Systems Scicence',
+		desc: 'Electrical Engineering & Systems Scicence',
 		code: 'eess',
 		checked: false,
 		categories: [

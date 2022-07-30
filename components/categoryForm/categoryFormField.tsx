@@ -96,6 +96,7 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
                             <Typography
                                 sx={{
                                     pl: 4,
+                                    width: '90%',
                                     fontSize: { xs: '0.9rem', sm: '1rem'},
                                 }}>{header.desc}</Typography>
 

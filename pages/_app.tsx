@@ -27,12 +27,17 @@ const loadConfig = (): CategoryForm | null => {
 	return null;
 }
 
+const deleteConfig = () => {
+	localStorage.removeItem('config');
+}
+
 const AppContext = createContext({
 	results: new Array<ArchiveResult>(),
 	query: '',
 	timePicked: new Date(),
 	saveConfig,
 	loadConfig,
+	deleteConfig
 });
 
 function MyApp({ Component, pageProps }: AppProps) {
