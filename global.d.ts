@@ -12,6 +12,7 @@ type ArchiveResult = {
 	author: string[],
 	id: string,
 	link: string[],
+	download?: string,
 	published: string,
 	summary: string,
 	title: string,

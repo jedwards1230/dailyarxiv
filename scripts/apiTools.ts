@@ -30,6 +30,12 @@ function cleanData(entry: any) {
 		updated: entry.updated[0]
 	}
 
+	entry.link.forEach((l: any) => {
+		if (l.$.title === 'pdf') {
+			paper.download = l.$['href'];
+		}
+	})
+
 	if (entry["arxiv:comment"]) paper.comment = entry["arxiv:comment"][0];
 	if (entry["arxiv:primary_category"]) {
 		const codes = entry["arxiv:primary_category"][0].$.term.split('.')
