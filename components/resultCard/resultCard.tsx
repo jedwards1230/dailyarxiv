@@ -2,21 +2,24 @@ import { Grid, Link, Typography } from "@mui/joy";
 import Card from "@mui/joy/Card";
 import IconButton from '@mui/joy/IconButton';
 import { useState } from "react";
-import styles from './ResultCard.module.css';
 import LaunchIcon from '@mui/icons-material/Launch';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
 import ParseTex from "../../scripts/texParser";
+import { useThemeChecker } from "../../scripts/theme";
+import { grey } from "@mui/material/colors";
 
 
 const ResultCard = (props: { result: ArchiveResult, i: number }) => {
     const [open, setOpen] = useState(false);
+    const [mode, setMode] = useThemeChecker();
 
     return (
         <Card sx={{
             py: 1,
             borderRadius: '0.5rem',
+            backgroundColor: 'background.paper',
             '&:hover, &:focus': {
-                backgroundColor: 'rgba(0, 0, 0, 0.5)',
+                backgroundColor: (mode === 'dark') ? grey[900] : grey[100],
             }
         }}>
             <Link

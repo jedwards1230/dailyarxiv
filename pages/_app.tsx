@@ -1,7 +1,7 @@
 import '../styles/globals.css'
 import "../styles/calendar.css";
 import type { AppProps } from 'next/app'
-import { NoSsr } from '@mui/material';
+import { CssBaseline, NoSsr } from '@mui/material';
 import { createContext, useContext } from 'react';
 import { MathJaxContext } from 'better-react-mathjax';
 import { CssVarsProvider } from '@mui/joy/styles';
@@ -9,7 +9,7 @@ import theme from '../scripts/theme';
 import Layout from '../components/layout';
 
 // store categories, date in localstorage
-const saveConfig  = (categories: ArchiveHeader[], datepicker: Date) => {
+const saveConfig = (categories: ArchiveHeader[], datepicker: Date) => {
 	const config: CategoryForm = {
 		categories,
 		datepicker
@@ -44,6 +44,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 				<MathJaxContext>
 					<NoSsr>
 						<Layout>
+							<CssBaseline />
 							<Component {...pageProps} />
 						</Layout>
 					</NoSsr>

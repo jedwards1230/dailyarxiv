@@ -12,6 +12,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider, StaticDatePicker } from '@mui/x-date-pickers'
 import { useThemeChecker } from '../scripts/theme'
 import Title from '../components/title/title';
+import { Sheet } from '@mui/joy';
 
 const Home: NextPage = () => {
 	const appContext = useAppContext();
@@ -72,25 +73,32 @@ function StaticDatePickerDemo() {
 	const { control } = useFormContext();
 
 	return (
-		<LocalizationProvider dateAdapter={AdapterDateFns}>
-			<Controller
-				name={'datepicker'}
-				control={control}
-				render={({ field }) => (
-					<StaticDatePicker
-						disableFuture
-						displayStaticWrapperAs="desktop"
-						openTo="day"
-						value={field.value}
-						onChange={(newValue: any) => {
-							field.onChange(newValue);
-						}}
-						renderInput={(params: any) => <TextField {...params} />}
-					/>
-				)}
-			/>
-
-		</LocalizationProvider>
+		<Sheet
+			sx={{
+				borderRadius: '0.5rem',
+				borderColor: 'divider',
+				borderStyle: 'solid',
+				boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)',
+			}}>
+			<LocalizationProvider dateAdapter={AdapterDateFns}>
+				<Controller
+					name={'datepicker'}
+					control={control}
+					render={({ field }) => (
+						<StaticDatePicker
+							disableFuture
+							displayStaticWrapperAs="desktop"
+							openTo="day"
+							value={field.value}
+							onChange={(newValue: any) => {
+								field.onChange(newValue);
+							}}
+							renderInput={(params: any) => <TextField {...params} />}
+						/>
+					)}
+				/>
+			</LocalizationProvider>
+		</Sheet>
 	);
 }
 
