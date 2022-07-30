@@ -12,7 +12,7 @@ import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider, StaticDatePicker } from '@mui/x-date-pickers'
 import { useThemeChecker } from '../scripts/theme'
 import Title from '../components/title/title';
-import { Sheet } from '@mui/joy';
+import { Box } from '@mui/joy';
 import Section from '../components/section';
 
 const Home: NextPage = () => {
@@ -57,7 +57,7 @@ const Home: NextPage = () => {
 				</Section>
 
 				<Section>
-					<Sheet
+					<Box
 						sx={{
 							mx: 0,
 							width: '100%',
@@ -69,10 +69,10 @@ const Home: NextPage = () => {
 							//boxShadow: 1,
 						}}>
 						<CategoryFormField />
-					</Sheet>
+					</Box>
 					<Button
 						color="primary"
-						style={{ marginTop: '2rem' }}
+						style={{ margin: '2rem 0' }}
 						onClick={methods.handleSubmit(onSubmit)}
 						variant="solid">Search</Button>
 				</Section>
@@ -85,7 +85,7 @@ function StaticDatePickerDemo() {
 	const { control } = useFormContext();
 
 	return (
-		<Sheet
+		<Box
 			sx={{
 				mx: 0,
 				padding: 1,
@@ -111,7 +111,7 @@ function StaticDatePickerDemo() {
 					)}
 				/>
 			</LocalizationProvider>
-		</Sheet>
+		</Box>
 	);
 }
 

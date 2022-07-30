@@ -1,19 +1,20 @@
-import Sheet from "@mui/joy/Sheet"
+import { Box } from "@mui/joy"
 
 const Section = (props: { children: React.ReactNode }) => {
-	return (
-		<Sheet sx={{
-			display: 'flex',
-			flexDirection: 'column',
-			alignItems: 'center',
-			justifyContent: 'center',
-			height: '100%',
-			my: 2,
-			minHeight: '100%',
-		}}>
-			{props.children}
-		</Sheet>
-	)
+    return (
+        <Box
+            sx={{
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: '100%',
+                my: 2,
+                minHeight: '100%',
+            }}>
+            {props.children}
+        </Box>
+    )
 }
 
 export default Section

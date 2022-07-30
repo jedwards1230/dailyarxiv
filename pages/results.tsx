@@ -19,7 +19,7 @@ const Results: NextPage = () => {
     const appContext = useAppContext();
     const [results, setResults] = useState<ArchiveResult[]>(appContext.results);
 
-    if (results.length < 1) {
+    if (!results || results.length < 1) {
         router.push('/');
         return null;
     }
@@ -79,7 +79,7 @@ const SearchInfo = (props: {
                 value={resultsShown}
                 onChange={changeMaxResults}
                 sx={{
-                    width: ((resultsShown.toString().length + 3) * 9) + 'px',
+                    width: ((resultsShown.toString().length + 3) * 9),
                     mx: 1
                 }} />  {props.results.length > 1 ? 'results' : 'result'}
         </>
