@@ -60,7 +60,7 @@ const Home: NextPage = () => {
 					<Box
 						sx={{
 							mx: 0,
-							width: '100%',
+							width: { xs: '100%', sm: '80%', md: '60%', lg: '40%' },
 							px: 1,
 							py: 0.5,
 							/* borderRadius: '2%',
@@ -90,8 +90,8 @@ function StaticDatePickerDemo() {
 				mx: 0,
 				padding: 1,
 				/* borderRadius: '2%',
-				border: { xs: 0, sm: 1},
-				boxShadow: 1, */
+				border: { xs: 0, sm: 1}, */
+				//boxShadow: 1
 			}}>
 			<LocalizationProvider dateAdapter={AdapterDateFns}>
 				<Controller

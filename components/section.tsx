@@ -10,6 +10,7 @@ const Section = (props: { children: React.ReactNode }) => {
                 justifyContent: 'center',
                 height: '100%',
                 my: 2,
+                width: '100%',
                 minHeight: '100%',
             }}>
             {props.children}
