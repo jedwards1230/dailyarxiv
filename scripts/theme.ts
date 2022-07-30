@@ -122,7 +122,7 @@ const muiTheme = extendMuiTheme({
                     white: '#FFF',
                     black: '#09090D',
                 },
-                divider: colors.grey[200],
+                divider: `rgba(${colors.blue[300]}, 0.9)`,
                 text: {
                     primary: colors.grey[800],
                     secondary: colors.grey[600],
@@ -155,7 +155,7 @@ const muiTheme = extendMuiTheme({
                     white: '#FFF',
                     black: '#09090D',
                 },
-                divider: colors.grey[800],
+                divider: `rgba(${colors.grey[800]}, 0.12)`,
                 text: {
                     primary: colors.grey[100],
                     secondary: colors.grey[300],

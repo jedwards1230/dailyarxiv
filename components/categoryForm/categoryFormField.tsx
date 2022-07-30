@@ -93,7 +93,11 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
                                 </div>
                             }
                         >
-                            <Typography sx={{ pl: 4 }}>{header.desc}</Typography>
+                            <Typography
+                                sx={{
+                                    pl: 4,
+                                    fontSize: { xs: '0.9rem', sm: '1rem'},
+                                }}>{header.desc}</Typography>
 
                         </ListItem>
                         {(hasChildren && open[index]) &&

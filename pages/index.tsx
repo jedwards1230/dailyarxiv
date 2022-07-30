@@ -13,6 +13,7 @@ import { LocalizationProvider, StaticDatePicker } from '@mui/x-date-pickers'
 import { useThemeChecker } from '../scripts/theme'
 import Title from '../components/title/title';
 import { Sheet } from '@mui/joy';
+import Section from '../components/section';
 
 const Home: NextPage = () => {
 	const appContext = useAppContext();
@@ -45,25 +46,37 @@ const Home: NextPage = () => {
 	return (
 		<div className={styles.container}>
 			<FormProvider {...methods}>
-				<div className={styles.welcome}>
+				<Section>
 					<Title />
 
 					<p className={styles.description}>
 						Get started by choosing a date below
 					</p>
 
-					{/* <CalendarComponent /> */}
 					<StaticDatePickerDemo />
-				</div>
+				</Section>
 
-				<div className={styles.categoryTree}>
-					<CategoryFormField />
+				<Section>
+					<Sheet
+						sx={{
+							mx: 0,
+							width: '100%',
+							minHeight: { xs: 0, md: '100vh'},
+							px: 1,
+							py: 0.5,
+							/* borderRadius: '2%',
+							border: { xs: 0, sm: 1},
+							borderColor: 'primary.main', */
+							//boxShadow: 1,
+						}}>
+						<CategoryFormField />
+					</Sheet>
 					<Button
 						color="primary"
-						style={{ marginTop: '3rem' }}
+						style={{ marginTop: '2rem' }}
 						onClick={methods.handleSubmit(onSubmit)}
 						variant="solid">Search</Button>
-				</div>
+				</Section>
 			</FormProvider>
 		</div>
 	)
@@ -75,10 +88,11 @@ function StaticDatePickerDemo() {
 	return (
 		<Sheet
 			sx={{
-				borderRadius: '0.5rem',
-				borderColor: 'divider',
-				borderStyle: 'solid',
-				boxShadow: '0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 3px 10px 0 rgba(0, 0, 0, 0.19)',
+				mx: 0,
+				padding: 1,
+				/* borderRadius: '2%',
+				border: { xs: 0, sm: 1},
+				boxShadow: 1, */
 			}}>
 			<LocalizationProvider dateAdapter={AdapterDateFns}>
 				<Controller

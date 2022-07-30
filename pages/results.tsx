@@ -10,6 +10,7 @@ import Title from "../components/title/title";
 
 import styles from '../styles/Results.module.css'
 import ResultCard from "../components/resultCard/resultCard";
+import Section from "../components/section";
 
 
 const Results: NextPage = () => {
@@ -26,13 +27,13 @@ const Results: NextPage = () => {
     return (
         <div className={styles.container}>
             <main className={styles.main}>
-                <div className={styles.welcome}>
+                <Section>
                     <Title />
 
                     <div className={styles.description}>
                         <SearchInfo results={results} setResults={setResults} />
                     </div>
-                </div>
+                </Section>
                 <Stack 
                     spacing={1}
                     sx={{
