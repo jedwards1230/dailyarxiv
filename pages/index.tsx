@@ -61,7 +61,6 @@ const Home: NextPage = () => {
 						sx={{
 							mx: 0,
 							width: '100%',
-							minHeight: { xs: 0, md: '100vh'},
 							px: 1,
 							py: 0.5,
 							/* borderRadius: '2%',
