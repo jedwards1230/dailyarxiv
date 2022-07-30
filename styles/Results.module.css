@@ -13,10 +13,6 @@
     align-items: center;
 }
 
-.results {
-    width: 80%;
-}
-
 .welcome {
     display: flex;
     flex-direction: column;

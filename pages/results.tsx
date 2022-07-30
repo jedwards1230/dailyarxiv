@@ -33,7 +33,11 @@ const Results: NextPage = () => {
                         <SearchInfo results={results} setResults={setResults} />
                     </div>
                 </div>
-                <Stack className={styles.results} spacing={1}>
+                <Stack 
+                    spacing={1}
+                    sx={{
+                        width: {xs: '100%', md: '80%'},
+                    }}>
                     {results.map((result, i) => <ResultCard key={i} result={result} i={i} />)}
                 </Stack>
             </main>
