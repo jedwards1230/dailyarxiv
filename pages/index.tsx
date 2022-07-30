@@ -44,7 +44,7 @@ const Home: NextPage = () => {
 	}
 
 	return (
-		<div className={styles.container}>
+		<>
 			<FormProvider {...methods}>
 				<Section>
 					<Title />
@@ -73,7 +73,7 @@ const Home: NextPage = () => {
 						variant="solid">Search</Button>
 				</Section>
 			</FormProvider>
-		</div>
+		</>
 	)
 }
 

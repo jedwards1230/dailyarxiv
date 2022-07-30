@@ -25,7 +25,7 @@ const Results: NextPage = () => {
     }
 
     return (
-        <div className={styles.container}>
+        <>
             <main className={styles.main}>
                 <Section>
                     <Title />
@@ -48,7 +48,7 @@ const Results: NextPage = () => {
                     by Justin Edwards
                 </a>
             </footer>
-        </div>
+        </>
     )
 }
 

@@ -27,20 +27,26 @@ const ResultCard = (props: { result: ArchiveResult, i: number }) => {
             <Link
                 overlay
                 onClick={() => setOpen(!open)}>
-                <Typography sx={{ fontSize: 20 }} level="h6">
+                <Typography sx={{ fontSize: {xs: '1rem', sm: '1.1rem'} }} level="h6">
                     {ParseTex(props.result.title)}
                 </Typography>
             </Link>
             <Grid container>
                 <Grid xs={10}>
-                    <Typography sx={{ mb: 1, width: "90%", fontSize: 15 }} textColor="text.secondary">
+                    <Typography sx={{ mb: 1, width: "90%", fontSize: {xs: '0.85rem', sm: '0.95rem'} }} textColor="text.secondary">
                         {props.result.author.map((author, i: number) => (i === props.result.author.length - 1) ? author : author + ', ')}
                     </Typography>
-                    <Typography sx={{ fontSize: 13 }} color="primary" gutterBottom>
+                    <Typography sx={{ width: "90%", fontSize: {xs: '0.75rem', sm: '0.85rem'} }} color="primary" gutterBottom>
                         {props.result.codes?.join(' > ')}
                     </Typography>
                 </Grid>
-                <Grid xs={2}>
+                <Grid
+                    xs={2}
+                    sx={{
+                        display: 'flex',
+                        justifyContent: 'flex-end',
+                        alignItems: 'center',
+                    }}>
                     <IconButton
                         variant="plain"
                         component='a'
@@ -62,7 +68,7 @@ const ResultCard = (props: { result: ArchiveResult, i: number }) => {
                 </Grid>
             </Grid>
             {open &&
-                <Typography sx={{ fontSize: 14, pb: 2, pt: 1 }} >{ParseTex(props.result.summary)}</Typography>}
+                <Typography sx={{ fontSize: {xs: '0.85rem', sm: '0.95rem'}, pb: 2, pt: 1 }} >{ParseTex(props.result.summary)}</Typography>}
         </Card>
     )
 }
