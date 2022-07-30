@@ -1,9 +1,9 @@
 import { NextPage } from "next/types";
 import { useAppContext } from "./_app";
-import { Stack } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { useThemeChecker } from "../scripts/theme";
-import { TextField } from "@mui/joy";
+import { Box, TextField } from "@mui/joy";
 import { useEffect, useState } from "react";
 import { queryToUrl, fetchArchive } from "../scripts/apiTools";
 import Title from "../components/title/title";
@@ -34,10 +34,10 @@ const Results: NextPage = () => {
                         <SearchInfo results={results} setResults={setResults} />
                     </div>
                 </Section>
-                <Stack 
+                <Stack
                     spacing={1}
                     sx={{
-                        width: {xs: '100%', md: '80%'},
+                        width: { xs: '100%', md: '80%' },
                     }}>
                     {results.map((result, i) => <ResultCard key={i} result={result} i={i} />)}
                 </Stack>
@@ -74,14 +74,20 @@ const SearchInfo = (props: {
 
     return (
         <>
-            Showing  <TextField
-                variant="plain"
-                value={resultsShown}
-                onChange={changeMaxResults}
-                sx={{
-                    width: ((resultsShown.toString().length + 3) * 9),
-                    mx: 1
-                }} />  {props.results.length > 1 ? 'results' : 'result'}
+            <Typography sx={{ fontSize: { xs: '1.2rem', sm: '1.4rem' } }}>
+                {appContext.timePicked.toDateString()}
+            </Typography>
+            <Typography sx={{ fontSize: { xs: '1.1rem', sm: '1.3rem' } }}>
+                Showing<TextField
+                    variant="plain"
+                    value={resultsShown}
+                    onChange={changeMaxResults}
+                    sx={{
+                        display: 'inline-flex',
+                        width: ((resultsShown.toString().length + 3) * 9),
+                        mx: 0.5,
+                    }} />{props.results.length > 1 ? 'results' : 'result'}
+            </Typography>
         </>
     )
 }

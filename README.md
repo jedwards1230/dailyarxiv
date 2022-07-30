@@ -16,5 +16,4 @@ Thank you to arXiv for use of its [open access interoperability](https://arxiv.o
 * check the physics category is properly handled in form
   * physics uses additional subcategories with different codes
 * change up colors?
-* add search input info on results page (categories, dates, etc)
 * optional date range instead of just one day

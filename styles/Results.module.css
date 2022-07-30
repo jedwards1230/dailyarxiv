@@ -7,11 +7,11 @@
 }
 
 .description {
-    text-align: center;
     margin: 0 0 2rem;
-    display: inline-flex;
-    align-items: center;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .footer {
