@@ -14,14 +14,16 @@ const ResultCard = (props: { result: ArchiveResult, i: number }) => {
     const [mode, setMode] = useThemeChecker();
 
     return (
-        <Card sx={{
-            py: 1,
-            borderRadius: '0.5rem',
-            backgroundColor: 'background.paper',
-            '&:hover, &:focus': {
-                backgroundColor: (mode === 'dark') ? grey[900] : grey[100],
-            }
-        }}>
+        <Card
+            variant="outlined"
+            sx={{
+                py: 1.25,
+                borderRadius: '0.5rem',
+                backgroundColor: (mode === 'dark') ? grey[900] : grey[50],
+                '&:hover, &:focus': {
+                    backgroundColor: (mode === 'dark') ? grey[800] : grey[100],
+                },
+            }}>
             <Link
                 overlay
                 onClick={() => setOpen(!open)}>

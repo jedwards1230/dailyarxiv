@@ -63,10 +63,6 @@ const Home: NextPage = () => {
 							width: { xs: '100%', sm: '80%', md: '60%', lg: '40%' },
 							px: 1,
 							py: 0.5,
-							/* borderRadius: '2%',
-							border: { xs: 0, sm: 1},
-							borderColor: 'primary.main', */
-							//boxShadow: 1,
 						}}>
 						<CategoryFormField />
 					</Box>
@@ -89,9 +85,6 @@ function StaticDatePickerDemo() {
 			sx={{
 				mx: 0,
 				padding: 1,
-				/* borderRadius: '2%',
-				border: { xs: 0, sm: 1}, */
-				//boxShadow: 1
 			}}>
 			<LocalizationProvider dateAdapter={AdapterDateFns}>
 				<Controller
@@ -103,9 +96,7 @@ function StaticDatePickerDemo() {
 							displayStaticWrapperAs="desktop"
 							openTo="day"
 							value={field.value}
-							onChange={(newValue: any) => {
-								field.onChange(newValue);
-							}}
+							onChange={(newValue: any) => field.onChange(newValue)}
 							renderInput={(params: any) => <TextField {...params} />}
 						/>
 					)}
