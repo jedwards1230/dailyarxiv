@@ -68,7 +68,7 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
                                         <Checkbox
                                             color="primary"
                                             variant="soft"
-                                            checked={indeterminate || field.value}
+                                            checked={field.value}
                                             indeterminate={indeterminate}
                                             onChange={(e) => {
                                                 if (hasChildren) updateChildren(index, e.target.checked)
