@@ -5,22 +5,23 @@ import styles from './Title.module.css'
 const Title = () => {
     return (
         <div className={styles.title}>
-            <Typography sx={{
-                fontSize: '4rem',
-                display: 'inline'
-            }}>Daily</Typography>
-            <Typography sx={{
-                fontSize: '4rem',
-                display: 'inline'
-            }}><NextLink href="/" passHref>
-                    <Link sx={{
+            <NextLink href="/" passHref>
+                <Link>
+                    <Typography sx={{
+                        fontSize: '4rem',
+                        display: 'inline',
                         textDecoration: 'none',
-                    }}>
-                        arXiv
-                    </Link>
-                </NextLink>
-            </Typography>
-        </div>
+                        color: 'text.primary'
+                    }}>Daily</Typography>
+                    <Typography sx={{
+                        fontSize: '4rem',
+                        display: 'inline',
+                        color: 'primary.main'
+                    }}>arXiv
+                    </Typography>
+                </Link>
+            </NextLink>
+        </div >
     )
 }
 

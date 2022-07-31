@@ -3,11 +3,10 @@ import { useAppContext } from "./_app";
 import { Stack, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { useThemeChecker } from "../scripts/theme";
-import { Box, TextField } from "@mui/joy";
-import { useEffect, useState } from "react";
+import { TextField } from "@mui/joy";
+import { useState } from "react";
 import { queryToUrl, fetchArchive } from "../scripts/apiTools";
 import Title from "../components/title/title";
-
 import styles from '../styles/Results.module.css'
 import ResultCard from "../components/resultCard/resultCard";
 import Section from "../components/section";
