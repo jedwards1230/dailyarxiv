@@ -70,7 +70,7 @@ const SearchInfo = (props: {
             <p className={styles.datePicked}>
                 {appContext.timePicked.toDateString()}
             </p>
-            <p className={styles.resultCount}>
+            <div className={styles.resultCount}>
                 Showing
                 <TextField
                     variant="plain"
@@ -82,7 +82,7 @@ const SearchInfo = (props: {
                         mx: 0.5,
                     }} />
                 {props.results.length > 1 ? 'results' : 'result'}
-            </p>
+            </div>
         </>
     )
 }
