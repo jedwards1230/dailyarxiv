@@ -1,6 +1,7 @@
 .categoryTree {
 	margin: 0;
 	width: 100%;
+	min-width: 70vw;
 	padding: 0.5rem 1rem;
 }
 

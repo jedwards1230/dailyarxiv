@@ -94,7 +94,7 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
                             <p className={styles.header}>{header.desc}</p>
                         </ListItem>
                         {(hasChildren && open[index]) &&
-                            <ListItem nested sx={{ pl: 4 }} >
+                            <ListItem nested sx={{ pl: 4, mr: -3 }} >
                                 <CategoryFormField prefix={`${prefix}categories.${index}.`} />
                             </ListItem>
                         }
