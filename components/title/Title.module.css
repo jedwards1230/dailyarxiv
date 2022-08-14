@@ -4,3 +4,22 @@
     font-size: 4rem;
     text-align: center;
 }
+
+.title:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-decoration-color: var(--primary);
+}
+
+.titleMain {
+    font-size: 4rem;
+    display: inline;
+    text-decoration: none;
+    color: var(--foreground);
+}
+
+.titleLink {
+    font-size: 4rem;
+    display: inline;
+    color: var(--primary);
+}

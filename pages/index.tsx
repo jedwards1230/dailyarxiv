@@ -1,16 +1,14 @@
 import type { NextPage } from 'next'
 import { fetchArchive, queryToUrl, buildQuery } from '../scripts/apiTools'
 import { FormProvider, useForm } from 'react-hook-form'
-import Button from '@mui/joy/Button';
 import { useRouter } from 'next/router'
 import { useAppContext } from './_app'
 import CategoryFormField from '../components/categoryForm/categoryFormField'
 import { ArxivCategories } from '../constants'
 import { useThemeChecker } from '../scripts/theme'
 import Title from '../components/title/title';
-import { Box } from '@mui/joy';
-import Section from '../components/section';
 import CalendarComponent from '../components/calendar/calendar';
+import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
 	const appContext = useAppContext();
@@ -45,26 +43,18 @@ const Home: NextPage = () => {
 	return (
 		<>
 			<FormProvider {...methods}>
-				<Section>
+				<div className={styles.section}>
 					<Title />
 					<CalendarComponent />
-				</Section>
-				<Section>
-					<Box
-						sx={{
-							mx: 0,
-							width: { xs: '100%', sm: '80%', md: '60%', lg: '40%' },
-							px: 1,
-							py: 0.5,
-						}}>
+				</div>
+				<div className={styles.section}>
+					<div className={styles.categoryTree}>
 						<CategoryFormField />
-					</Box>
-					<Button
-						color="primary"
-						style={{ margin: '2rem 0' }}
-						onClick={methods.handleSubmit(onSubmit)}
-						variant="solid">Search</Button>
-				</Section>
+					</div>
+					<button
+						className={styles.submitButton}
+						onClick={methods.handleSubmit(onSubmit)}>Search</button>
+				</div>
 			</FormProvider>
 		</>
 	)

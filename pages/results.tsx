@@ -1,6 +1,5 @@
 import { NextPage } from "next/types";
 import { useAppContext } from "./_app";
-import { Stack, Typography } from "@mui/material";
 import { useRouter } from "next/router";
 import { useThemeChecker } from "../scripts/theme";
 import { TextField } from "@mui/joy";
@@ -9,7 +8,6 @@ import { queryToUrl, fetchArchive } from "../scripts/apiTools";
 import Title from "../components/title/title";
 import styles from '../styles/Results.module.css'
 import ResultCard from "../components/resultCard/resultCard";
-import Section from "../components/section";
 
 
 const Results: NextPage = () => {
@@ -26,20 +24,16 @@ const Results: NextPage = () => {
     return (
         <>
             <main className={styles.main}>
-                <Section>
+                <div className={styles.section}>
                     <Title />
 
                     <div className={styles.description}>
                         <SearchInfo results={results} setResults={setResults} />
                     </div>
-                </Section>
-                <Stack
-                    spacing={1}
-                    sx={{
-                        width: { xs: '100%', md: '80%' },
-                    }}>
+                </div>
+                <div className={styles.resultList}>
                     {results.map((result, i) => <ResultCard key={i} result={result} i={i} />)}
-                </Stack>
+                </div>
             </main>
 
             <footer className={styles.footer}>
@@ -73,11 +67,12 @@ const SearchInfo = (props: {
 
     return (
         <>
-            <Typography sx={{ fontSize: { xs: '1.2rem', sm: '1.4rem' } }}>
+            <p className={styles.datePicked}>
                 {appContext.timePicked.toDateString()}
-            </Typography>
-            <Typography sx={{ fontSize: { xs: '1.1rem', sm: '1.3rem' } }}>
-                Showing<TextField
+            </p>
+            <p className={styles.resultCount}>
+                Showing
+                <TextField
                     variant="plain"
                     value={resultsShown}
                     onChange={changeMaxResults}
@@ -85,8 +80,9 @@ const SearchInfo = (props: {
                         display: 'inline-flex',
                         width: ((resultsShown.toString().length + 3) * 9),
                         mx: 0.5,
-                    }} />{props.results.length > 1 ? 'results' : 'result'}
-            </Typography>
+                    }} />
+                {props.results.length > 1 ? 'results' : 'result'}
+            </p>
         </>
     )
 }

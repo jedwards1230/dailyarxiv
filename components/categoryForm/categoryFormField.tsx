@@ -5,10 +5,8 @@ import ListItem from '@mui/joy/ListItem';
 import React, { FunctionComponent, useState } from 'react';
 import { Controller } from 'react-hook-form';
 import useCategoryFormField from './useCategoryFormField';
-import ListItemButton from '@mui/joy/ListItemButton';
 import IconButton from '@mui/joy/IconButton';
-import { Typography } from '@mui/joy';
-
+import styles from './Categories.module.css';
 
 interface Props {
     prefix?: string;
@@ -93,13 +91,7 @@ const CategoryFormField: FunctionComponent<Props> = ({ prefix = '' }) => {
                                 </div>
                             }
                         >
-                            <Typography
-                                sx={{
-                                    pl: 4,
-                                    width: '90%',
-                                    fontSize: { xs: '0.9rem', sm: '1rem'},
-                                }}>{header.desc}</Typography>
-
+                            <p className={styles.header}>{header.desc}</p>
                         </ListItem>
                         {(hasChildren && open[index]) &&
                             <ListItem nested sx={{ pl: 4 }} >

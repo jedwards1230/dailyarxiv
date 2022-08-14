@@ -1,4 +1,3 @@
-import Typography from "@mui/joy/Typography";
 import MathJax from "better-react-mathjax/MathJax";
 
 /** Scan through the title string to $[content]$ with <MathJax>[content]</MathJax>  */
@@ -8,7 +7,7 @@ export default function ParseTex(dirtyStr: string): any {
         if (dirtyStr[i] === '$') {
             let j = i + 1;
             while (dirtyStr[j] !== '$') j++;
-            res.push(<Typography sx={{ fontStyle: 'strong' }}><MathJax inline={true} >{dirtyStr.substring(i + 1, j)}</MathJax></Typography>);
+            res.push(<strong><MathJax inline={true} >{dirtyStr.substring(i + 1, j)}</MathJax></strong>);
             i = j;
         } else {
             res.push(<span>{dirtyStr[i]}</span>);

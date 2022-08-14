@@ -4,6 +4,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
 }
 
 .description {
@@ -12,6 +13,26 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+}
+
+.section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+	width: 100%;
+	margin: 2rem 0;
+}
+
+.resultList {
+    margin: 1rem 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .footer {
@@ -28,4 +49,16 @@
     justify-content: center;
     align-items: center;
     flex-grow: 1;
+}
+
+.datePicked {
+    font-size: 1.4rem;
+    color: var(--text-primary);
+    margin: 0.1rem 0;
+}
+
+.resultCount {
+    font-size: 1.3rem;
+    color: var(--text-primary);
+    margin: 0;
 }

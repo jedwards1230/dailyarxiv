@@ -1,0 +1,61 @@
+.card {
+    padding: 0.7rem 1rem;
+    margin: 0.3rem 0;
+    width: 100%;
+    border-radius: 0.5rem;
+    background-color: var(--card-background);
+    border: 1px solid var(--divider);
+}
+
+.card:hover,
+.card:focus {
+    background-color: var(--card-hover);
+}
+
+.title {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin: 0;
+    padding: 0.25rem 0 0.1rem;
+}
+
+.title:hover {
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-color: var(--primary);
+}
+
+.authors {
+    margin-bottom: 1rem;
+    width: 90%;
+    font-size: 0.9rem;
+    font-weight: 400;
+    margin: 0 0 0.5rem;
+    color: var(--text-secondary);
+}
+
+.category {
+    width: 90%;
+    font-size: 0.8rem;
+    color: var(--primary);
+    margin: 0;
+    padding-top: 0.2rem;
+}
+
+.description {
+    font-size: 0.9rem;
+    padding: 0.5rem 0 0;
+}
+
+.icon {
+    color: var(--primary);
+    font-size: 1.5rem;
+    margin: 0.2rem;
+    padding: 0.2rem;
+}
+
+.icon:hover {
+	color: var(--primary-hover);
+	cursor: pointer;
+	transition: 0.5s ease;
+}
