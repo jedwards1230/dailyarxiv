@@ -1,18 +1,14 @@
-import { Box } from '@mui/joy';
 import { DatePicker, LocalizationProvider } from '@mui/x-date-pickers';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { Controller, useFormContext } from 'react-hook-form'
 import TextField from '@mui/material/TextField';
+import styles from './Calendar.module.css';
 
 const CalendarComponent = () => {
     const { control } = useFormContext();
 
     return (
-        <Box
-            sx={{
-                mx: 0,
-                padding: 1,
-            }}>
+        <div className={styles.container}>
             <LocalizationProvider dateAdapter={AdapterDateFns}>
                 <Controller
                     name={'datepicker'}
@@ -29,7 +25,7 @@ const CalendarComponent = () => {
                     )}
                 />
             </LocalizationProvider>
-        </Box>
+        </div>
     );
 }
 
